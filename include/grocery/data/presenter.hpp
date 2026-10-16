@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file presenter.hpp
+ * @brief Public interface for formatting grocery data for display.
+ */
+
 #include <string>
 #include <map>
 

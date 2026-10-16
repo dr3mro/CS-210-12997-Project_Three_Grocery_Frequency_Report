@@ -1,3 +1,8 @@
+/**
+ * @file controller.cpp
+ * @brief Implements menu construction, rendering, and input dispatch.
+ */
+
 #include "include/grocery/ui/controller.hpp"
 #include <iostream>
 #include <limits>
@@ -6,33 +11,63 @@
 
 namespace grocery::ui
 {
+    /**
+     * @brief Clear the terminal using the standard ANSI escape sequence.
+     *
+     * The escape sequence clears the visible screen and moves the cursor to
+     * row one, column one before the menu is printed.
+     */
     void UIController::cleanScreen() const
     {
-        std::cout << "\033[2J\033[1;1H"; // ANSI escape code to clear the screen and move the cursor to the top-left corner
+        // ANSI commands clear the screen and move the cursor to row 1, column 1.
+        std::cout << "\033[2J\033[1;1H";
     }
+    /**
+     * @brief Create the four application menu actions.
+     *
+     * Dialog actions capture the controller to access its Dialog member;
+     * the exit action is independent of controller state.
+     */
     void UIController::CreateMenu()
     {
-        // Add menu items with their associated actions.
+        // Each callback captures this controller so it can invoke its dialog.
         menu.addItem("find an item.",
                      [this]()
                      {
+                         // Delegate the lookup loop to the dialog layer.
                          dialog.FindItem();
                      });
         menu.addItem("list items and quantaties.", [this]()
-                     { dialog.ListItemsWithQuantities(); });
+                     {
+                         // Display the tabular report through the dialog layer.
+                         dialog.ListItemsWithQuantities();
+                     });
         menu.addItem("print a histogram.", [this]()
-                     { dialog.PrintHistogram(); });
+                     {
+                         // Display the frequency bars through the dialog layer.
+                         dialog.PrintHistogram();
+                     });
+
+        // Exit does not need controller state, so it uses a non-capturing callback.
         menu.addItem("exit.", []()
                      { std::cout << "Exiting the program.\n"; 
                     exit(0); });
     }
 
+    /** Clear the terminal and render the current menu entries. */
     void UIController::ShowMenu() const
     {
         cleanScreen();
+        // Menu owns the entries and is responsible for rendering each one.
         menu.ShowMenu();
     }
 
+    /**
+     * @brief Process menu input until the user selects a quit command.
+     *
+     * Input is parsed as a complete token so values such as "2abc" cannot
+     * accidentally be accepted as menu choice two.
+     */
     void UIController::ProcessUserChoice()
     {
         std::string input;
@@ -41,6 +76,7 @@ namespace grocery::ui
             std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << ", q to quit): ";
             std::getline(std::cin, input);
 
+            // A letter command bypasses numeric parsing and exits cleanly.
             if (input == "q" || input == "Q")
             {
                 std::cout << "Exiting the program.\n";
@@ -50,6 +86,8 @@ namespace grocery::ui
             std::istringstream inputStream(input);
             int choice;
             char extra;
+
+            // Reject empty input, trailing characters, and out-of-range numbers.
             if (!(inputStream >> choice) || (inputStream >> extra) ||
                 choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
             {
@@ -60,7 +98,9 @@ namespace grocery::ui
             auto item = menu.getItem(choice - 1);
             if (item)
             {
+                // Convert the user's one-based choice into the menu's zero-based index.
                 item->ExecuteAction();
+                // Redraw after an action so the next prompt starts at a clean menu.
                 ShowMenu();
             }
             else

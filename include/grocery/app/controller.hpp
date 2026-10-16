@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file controller.hpp
+ * @brief Application-level orchestration for the Grocery program.
+ */
+
 /** @brief Default input file containing one grocery item per line. */
 constexpr const char *INPUT_FILE = "CS210_Project_Three_Input_File.txt";
 
@@ -12,7 +17,10 @@ namespace grocery::app
     class AppController
     {
     public:
+        /** @brief Construct an application workflow controller. */
         AppController() = default;
+
+        /** @brief Destroy the application workflow controller. */
         virtual ~AppController() = default;
         /**
          * @brief Runs the complete grocery application.

@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file controller.hpp
+ * @brief Public interface for coordinating grocery data operations.
+ */
+
 #include "include/grocery/data/kvstore.hpp"
 #include "include/grocery/io/controller.hpp"
 #include "include/grocery/data/serializer.hpp"
@@ -9,7 +15,10 @@ namespace grocery::data
     class DataController
     {
     public:
+        /** @brief Construct a data-operation controller. */
         DataController() = default;
+
+        /** @brief Destroy the data-operation controller. */
         virtual ~DataController() = default;
 
         /**

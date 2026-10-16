@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file serializer.hpp
+ * @brief Public interface for converting grocery data to and from text.
+ */
+
 #include <string>
 #include "include/grocery/data/kvstore.hpp"
 namespace grocery::data
@@ -7,7 +13,10 @@ namespace grocery::data
     class Serializer
     {
     public:
+        /** @brief Construct a serializer. */
         Serializer() = default;
+
+        /** @brief Destroy a serializer. */
         virtual ~Serializer() = default;
         /**
          * @brief Serializes item names and counts into a string.

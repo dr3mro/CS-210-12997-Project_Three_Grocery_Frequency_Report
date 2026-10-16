@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file reader.hpp
+ * @brief Public interface for reading text files.
+ */
+
 #include <string>
 namespace grocery::io
 {
@@ -6,7 +12,10 @@ namespace grocery::io
     class Reader
     {
     public:
+        /** @brief Construct a file reader. */
         Reader() = default;
+
+        /** @brief Destroy the file reader. */
         virtual ~Reader() = default;
         /**
          * @brief Appends a file's contents to a string.

@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file menu.hpp
+ * @brief Public interface for the interactive menu collection.
+ */
+
 #include <vector>
 #include <functional>
 
@@ -13,7 +18,10 @@ namespace grocery::ui
         std::vector<Item> items;
 
     public:
+        /** @brief Construct an empty menu. */
         Menu() = default;
+
+        /** @brief Destroy the menu and its owned items. */
         ~Menu() = default;
         /**
          * @brief Adds an item and callback to the menu.

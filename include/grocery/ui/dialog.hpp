@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file dialog.hpp
+ * @brief Public interface for interactive grocery-data dialogs.
+ */
+
 #include "grocery/data/controller.hpp"
 namespace grocery::ui
 {
@@ -9,7 +15,10 @@ namespace grocery::ui
         grocery::data::DataController dataController;
 
     public:
+        /** @brief Construct a dialog backed by a data controller. */
         Dialog() = default;
+
+        /** @brief Destroy the dialog and its data controller. */
         virtual ~Dialog() = default;
 
         /**

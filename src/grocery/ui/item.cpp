@@ -1,30 +1,69 @@
+/**
+ * @file item.cpp
+ * @brief Implements menu-item callbacks and display behavior.
+ */
+
 #include <functional>
 #include <iostream>
 #include <string>
 #include <utility>
 
 #include "grocery/ui/item.hpp"
+
 namespace grocery::ui
 {
+    /**
+     * @brief Store the text and callback for one menu entry.
+     *
+     * The constructor receives both values by value so callers may provide
+     * either lvalues or temporaries. Moving them into the object avoids an
+     * unnecessary second allocation or copy.
+     */
     Item::Item(std::string text, std::function<void()> action)
+        // Move the supplied values into their long-lived member variables.
+        // The post-increment gives this item the current number, then reserves
+        // the next number for the following item.
         : text(std::move(text)), action(std::move(action)), index(nextIndex++)
     {
     }
 
+    // Menu numbering is one-based because users select entries starting at 1.
     int Item::nextIndex = 1;
 
+    /**
+     * @brief Return the label without copying it.
+     *
+     * The reference remains valid while this Item object is alive and has not
+     * been moved from.
+     */
     const std::string &Item::GetText() const
     {
+        // Expose the stored label without transferring ownership or copying it.
         return text;
     }
 
+    /**
+     * @brief Invoke the action associated with the menu entry.
+     *
+     * Menu construction supplies the callback; this class deliberately does
+     * not need to know whether the action opens a dialog or exits the program.
+     */
     void Item::ExecuteAction() const
     {
+        // The callback contains the behavior associated with this menu entry.
+        // std::function safely stores either a free function or a captured lambda.
         action();
     }
 
+    /**
+     * @brief Write the user-facing representation of this menu entry.
+     *
+     * The index is stored on the item so its displayed number remains paired
+     * with its label when the menu is rendered.
+     */
     void Item::PrintItem() const
     {
+        // Keep the displayed number and label on one line for menu selection.
         std::cout << "Press " << index << " to " << text << std::endl;
     }
 } // namespace grocery::ui

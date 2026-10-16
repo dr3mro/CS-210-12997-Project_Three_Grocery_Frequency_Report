@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file controller.hpp
+ * @brief Public interface for the interactive console controller.
+ */
+
 #include "grocery/ui/menu.hpp"
 #include "grocery/ui/dialog.hpp"
 namespace grocery::ui
@@ -12,7 +17,10 @@ namespace grocery::ui
         Dialog dialog;
 
     public:
+        /** @brief Construct an empty UI controller. */
         UIController() = default;
+
+        /** @brief Destroy the UI controller and its menu/dialog members. */
         ~UIController() = default;
 
         /** @brief Clears the terminal and positions the cursor at its top left. */

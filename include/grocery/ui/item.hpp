@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file item.hpp
+ * @brief Public interface for an individual menu item.
+ */
+
 #include <string>
 #include <functional>
 
@@ -16,7 +21,7 @@ namespace grocery::ui
          */
         explicit Item(std::string text, std::function<void()> action);
 
-        /** @brief Destroys the menu item. */
+        /** @brief Destroy the menu item and its callback. */
         ~Item() = default;
 
         /** @return The item's display text. */

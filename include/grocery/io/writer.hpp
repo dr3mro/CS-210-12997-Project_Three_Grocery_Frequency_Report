@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file writer.hpp
+ * @brief Public interface for writing text files.
+ */
+
 #include <string>
 namespace grocery::io
 {
@@ -6,7 +12,10 @@ namespace grocery::io
     class Writer
     {
     public:
+        /** @brief Construct a file writer. */
         Writer() = default;
+
+        /** @brief Destroy the file writer. */
         virtual ~Writer() = default;
         /**
          * @brief Replaces a file's contents with a string.

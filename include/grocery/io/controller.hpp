@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file controller.hpp
+ * @brief Public file-I/O facade used by the data layer.
+ */
+
 #include <string>
 #include <grocery/io/reader.hpp>
 #include <grocery/io/writer.hpp>
@@ -9,7 +15,10 @@ namespace grocery::io
     class FileController
     {
     public:
+        /** @brief Construct a file-operation facade. */
         FileController() = default;
+
+        /** @brief Destroy the file-operation facade. */
         virtual ~FileController() = default;
         /**
          * @brief Reads a complete file into a string.

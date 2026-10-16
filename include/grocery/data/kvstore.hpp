@@ -1,4 +1,10 @@
 #pragma once
+
+/**
+ * @file kvstore.hpp
+ * @brief Shared in-memory storage for grocery item frequencies.
+ */
+
 #include <map>
 #include <string>
 
@@ -14,7 +20,10 @@ namespace grocery::data
          */
         static KVStore &Instance();
 
+        /** @brief Prevent copying the process-wide store. */
         KVStore(const KVStore &) = delete;
+
+        /** @brief Prevent assigning to the process-wide store. */
         KVStore &operator=(const KVStore &) = delete;
 
         /**
@@ -37,7 +46,10 @@ namespace grocery::data
         std::map<std::string, int> getItemsWithQuantaties() const;
 
     private:
+        /** @brief Construct the store; only Instance() may do so. */
         KVStore() = default;
+
+        /** @brief Destroy the process-wide store at program termination. */
         ~KVStore() = default;
     }; // class KVStore
 } // namespace grocery::data
