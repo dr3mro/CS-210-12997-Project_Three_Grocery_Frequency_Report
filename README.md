@@ -37,7 +37,8 @@ git push origin v1.0.0
 ```
 
 The `Build and publish binaries` workflow also supports manual runs from the
-repository's **Actions** tab. Tagged runs publish one asset for each supported
+repository's **Actions** tab. Every push to `main` creates downloadable
+workflow artifacts. Tagged runs publish one asset for each supported
 operating-system and architecture combination:
 
 ```text
