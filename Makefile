@@ -46,15 +46,7 @@ debug: $(DEBUG_TARGET)
 docs:
 	@command -v doxygen >/dev/null 2>&1 || { echo "Error: doxygen is not installed."; exit 1; }
 	@mkdir -p docs
-	@printf '%s\n' \
-		'PROJECT_NAME = Grocery' \
-		'OUTPUT_DIRECTORY = docs' \
-		'GENERATE_HTML = YES' \
-		'GENERATE_LATEX = NO' \
-		'RECURSIVE = YES' \
-		'INPUT = main.cpp include src' \
-		'QUIET = YES' \
-		| doxygen -
+	@doxygen Doxyfile
 
 clean:
 	$(RM) -r build
