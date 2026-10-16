@@ -5,10 +5,17 @@
 
 #include "include/grocery/data/serializer.hpp"
 
+#include <algorithm>
+#include <cctype>
 #include <sstream>
 
 namespace grocery::data
 {
+    bool Serializer::IsWhitespace(char character)
+    {
+        return std::isspace(static_cast<unsigned char>(character)) != 0;
+    }
+
     /** Convert each serializable stored item into one text record. */
     void Serializer::Serialize(const KVStore &kvStore, std::string &data) const
     {
@@ -16,13 +23,8 @@ namespace grocery::data
 
         for (const auto &pair : kvStore)
         {
-            // Find the first configured delimiter in the item name.
-            auto pos = pair.first.find_first_of(delimiter);
-            if (pos != std::string::npos)
-            {
-                // Emit the prefix and count in the existing report format.
-                stream << pair.first.substr(0, pos) << ":" << pair.second << "\n";
-            }
+            // Each map entry is already one complete grocery item.
+            stream << pair.first << ":" << pair.second << "\n";
         }
         // Replace the caller's output instead of appending to previous data.
         data = stream.str();
@@ -31,8 +33,8 @@ namespace grocery::data
     /**
      * @brief Parse input records and add their item names to the store.
      *
-     * Empty lines are ignored, and records without a recognized delimiter
-     * are skipped rather than being inserted as malformed item names.
+     * Empty and whitespace-only lines are ignored. Each remaining line is
+     * treated as one complete grocery item.
      */
     void Serializer::Deserialize(KVStore &kvStore, const std::string &data) const
     {
@@ -40,17 +42,18 @@ namespace grocery::data
 
         std::string line;
 
-        while (std::getline(stream >> std::ws, line))
+        while (std::getline(stream, line))
         {
-            if (!line.empty())
+            // getline removes '\n' but keeps '\r' from Windows CRLF input.
+            if (!line.empty() && line.back() == '\r')
             {
-                // Ignore lines that do not contain a configured delimiter.
-                auto pos = line.find_first_of(delimiter);
-                if (pos != std::string::npos)
-                {
-                    // Only the text before the delimiter becomes the item key.
-                    kvStore.addItem(line.substr(0, pos));
-                }
+                line.pop_back();
+            }
+
+            if (!line.empty() &&
+                !std::all_of(line.begin(), line.end(), IsWhitespace))
+            {
+                kvStore.addItem(line);
             }
         }
     }

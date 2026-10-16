@@ -12,8 +12,8 @@ namespace grocery::data
     /**
      * @brief Converts grocery records to and from the project's text format.
      *
-     * The current format is line-oriented and uses whitespace as the record
-     * delimiter expected by the existing input data.
+     * The input format is line-oriented: each non-empty line is one grocery
+     * item. Serialized output uses the item-and-count format.
      */
     class Serializer
     {
@@ -28,8 +28,7 @@ namespace grocery::data
          * @param kvStore Store whose contents will be serialized.
          * @param data Output string receiving the serialized records.
          *
-         * Item names that do not contain the configured delimiter are not
-         * emitted by the current implementation.
+         * Every stored item is emitted as an item-and-count record.
          */
         void Serialize(const KVStore &kvStore, std::string &data) const;
 
@@ -38,13 +37,17 @@ namespace grocery::data
          * @param kvStore Store that receives the parsed records.
          * @param data Text containing serialized records.
          *
-         * Empty lines and records without the configured delimiter are ignored.
+         * Empty and whitespace-only lines are ignored.
          * Existing counts are incremented rather than replaced.
          */
         void Deserialize(KVStore &kvStore, const std::string &data) const;
 
     private:
-        /** Whitespace characters used to identify record boundaries. */
-        const char *delimiter = " \t\v\f\r\n";
+        /**
+         * @brief Check whether a character is whitespace.
+         * @param character Character to inspect.
+         * @return true when the character is whitespace.
+         */
+        static bool IsWhitespace(char character);
     }; // class Serializer
 } // namespace grocery::data
