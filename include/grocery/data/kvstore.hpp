@@ -7,10 +7,16 @@ namespace grocery::data
     class KVStore : public std::map<std::string, int>
     {
     public:
-        KVStore() = default;
-        virtual ~KVStore() = default;
+        static KVStore& Instance();
+
+        KVStore(const KVStore&) = delete;
+        KVStore& operator=(const KVStore&) = delete;
 
         void addItem(const std::string &key);
         int getItem(const std::string &key) const;
+
+    private:
+        KVStore() = default;
+        ~KVStore() = default;
     }; // class KVStore
-} // namespace grocery::io
+} // namespace grocery::data

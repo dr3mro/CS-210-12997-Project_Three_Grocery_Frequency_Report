@@ -4,7 +4,11 @@ namespace grocery::ui
 {
     void Dialog::FindItem()
     {
-        std::cout << "You selected Option 1: Find an item.\n";
-        // Implement the logic to find an item here.
+        std::string itemName;
+        std::cout << "Enter the name of the item to find: ";
+        std::getline(std::cin >> std::ws, itemName);
+
+        std::string result = dataController.FindItem(itemName);
+        std::cout << result << std::endl;
     }
 } // namespace grocery::ui

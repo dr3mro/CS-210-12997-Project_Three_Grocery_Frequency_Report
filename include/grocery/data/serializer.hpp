@@ -12,5 +12,6 @@ namespace grocery::data
         void Deserialize(KVStore &kvStore, const std::string &data) const;
 
     private:
+        const char *delimiter = " \t\v\f\r\n"; // whitespace characters
     }; // class Serializer
 } // namespace grocery::data

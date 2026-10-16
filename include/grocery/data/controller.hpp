@@ -18,7 +18,7 @@ namespace grocery::data
 
     private:
         grocery::io::FileController fileController;
-        grocery::data::KVStore kvStore;
+        grocery::data::KVStore& kvStore = grocery::data::KVStore::Instance();
         grocery::data::Serializer serializer;
 
     }; // class DataController

@@ -8,8 +8,6 @@ namespace grocery::data
     {
         std::ostringstream stream;
 
-        auto delimiter = " \t\v\f\r\n"; // whitespace characters
-
         for (const auto &pair : kvStore)
         {
             auto pos = pair.first.find_first_of(delimiter);
@@ -24,14 +22,18 @@ namespace grocery::data
     void Serializer::Deserialize(KVStore &kvStore, const std::string &data) const
     {
         std::istringstream stream(data);
+
         std::string line;
 
-        while (std::getline(stream, line))
+        while (std::getline(stream >> std::ws, line))
         {
-
             if (!line.empty())
             {
-                kvStore.addItem(line);
+                auto pos = line.find_first_of(delimiter);
+                if (pos != std::string::npos)
+                {
+                    kvStore.addItem(line.substr(0, pos));
+                }
             }
         }
     }
