@@ -20,8 +20,10 @@ namespace grocery::io
         /**
          * @brief Appends a file's contents to a string.
          * @param filename Path of the file to read.
-         * @param data String that receives the file contents.
+         * @param data String to which the file contents are appended.
          * @throws std::runtime_error If the file cannot be opened.
+         *
+         * Each source line is followed by a newline in the destination.
          */
         void Read(const std::string &filename, std::string &data);
     }; // class Reader

@@ -10,8 +10,8 @@ namespace grocery::data
     /** Return the lazily initialized process-wide store. */
     KVStore &KVStore::Instance()
     {
-        // Function-local initialization provides one lazily created store.
-        // The same reference is returned to every controller and dialog.
+        // Function-local initialization creates the store on first use.
+        // Every later caller receives the same process-wide reference.
         static KVStore instance;
         return instance;
     }
@@ -19,24 +19,25 @@ namespace grocery::data
     /** Add one occurrence of an item to the frequency map. */
     void KVStore::addItem(const std::string &key)
     {
-        // Search first so an existing count can be updated in place.
+        // Search first so an existing count can be updated without replacing
+        // its map node or changing the key's stored spelling.
         auto it = find(key);
         if (it != end())
         {
-            // Every input record represents one additional occurrence.
+            // Each accepted input record represents one additional occurrence.
             it->second++;
         }
         else
         {
             // New grocery items begin with their first occurrence.
-            // insert() also preserves the map's sorted-key ordering.
+            // std::map keeps keys ordered for the presentation layer.
             this->insert({key, 1});
         }
     }
     /** Return the count for an item without modifying the map. */
     int KVStore::getItem(const std::string &key) const
     {
-        // Use a non-mutating lookup; operator[] would create missing entries.
+        // Use a non-mutating lookup; operator[] would create a missing entry.
         auto it = find(key);
         if (it != end())
         {
@@ -52,7 +53,7 @@ namespace grocery::data
     std::map<std::string, int> KVStore::getItemsWithQuantaties() const
     {
         // Return a copy so callers cannot modify the singleton accidentally.
-        // The copied map also gives presenters a stable read-only snapshot.
+        // Presenters therefore work from a stable snapshot of the counts.
         return *this;
     }
 

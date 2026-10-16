@@ -13,7 +13,7 @@ namespace grocery::data
         std::string data;
         // Read the whole file first so parsing remains independent of streams.
         fileController.ReadFromFile(filename, data);
-        // Deserialization converts each record into a store increment.
+        // Deserialization converts each eligible record into a store increment.
         serializer.Deserialize(kvStore, data);
     }
 
@@ -24,7 +24,7 @@ namespace grocery::data
         // Serialization is kept separate from file I/O so both responsibilities
         // can be changed independently.
         serializer.Serialize(kvStore, data);
-        // Writing happens only after serialization has completed successfully.
+        // Writing happens only after serialization has produced the full buffer.
         fileController.WriteToFile(filename, data);
     }
 

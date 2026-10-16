@@ -33,8 +33,8 @@ namespace grocery::ui
     /**
      * @brief Return the label without copying it.
      *
-     * The reference remains valid while this Item object is alive and has not
-     * been moved from.
+     * The reference remains valid while this Item object is alive and its
+     * text member is not modified.
      */
     const std::string &Item::GetText() const
     {

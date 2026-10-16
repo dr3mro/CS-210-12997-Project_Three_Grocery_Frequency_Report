@@ -18,6 +18,9 @@ namespace grocery::ui
          * @brief Creates a menu item.
          * @param text Text displayed for the item.
          * @param action Function executed when the item is selected.
+         *
+         * An empty callback is permitted by the type system, but invoking an
+         * empty callback later may throw std::bad_function_call.
          */
         explicit Item(std::string text, std::function<void()> action);
 
@@ -27,7 +30,10 @@ namespace grocery::ui
         /** @return The item's display text. */
         const std::string &GetText() const;
 
-        /** @brief Executes the item's callback. */
+        /**
+         * @brief Executes the item's callback.
+         * @throws std::bad_function_call If the callback is empty.
+         */
         void ExecuteAction() const;
 
         /** @brief Prints the item's number and display text. */

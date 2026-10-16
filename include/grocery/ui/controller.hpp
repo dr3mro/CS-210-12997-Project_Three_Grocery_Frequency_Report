@@ -32,7 +32,12 @@ namespace grocery::ui
         /** @brief Displays the current menu. */
         void ShowMenu() const;
 
-        /** @brief Reads and dispatches choices until the user quits. */
+        /**
+         * @brief Reads and dispatches choices until the user quits.
+         *
+         * Numeric choices are one-based in the user interface and converted
+         * to zero-based menu indexes internally.
+         */
         void ProcessUserChoice();
 
     }; // class UIController

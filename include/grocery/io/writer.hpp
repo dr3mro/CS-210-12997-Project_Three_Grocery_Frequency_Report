@@ -22,6 +22,9 @@ namespace grocery::io
          * @param filename Path of the file to write.
          * @param data Text to write.
          * @throws std::runtime_error If the file cannot be opened.
+         *
+         * Stream failures that occur after opening are reported by the
+         * underlying stream state and are not converted here.
          */
         void Write(const std::string &filename, const std::string &data) const;
     }; // class writer

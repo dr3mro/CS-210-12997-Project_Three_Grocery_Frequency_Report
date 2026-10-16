@@ -74,7 +74,7 @@ namespace grocery::ui
             std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << ", q to quit): ";
             std::getline(std::cin, input);
 
-            // A letter command bypasses numeric parsing and exits cleanly.
+            // A letter command bypasses numeric parsing and requests exit.
             if (input == "q" || input == "Q")
             {
                 std::cout << "Exiting the program.\n";

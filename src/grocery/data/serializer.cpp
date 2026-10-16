@@ -16,11 +16,11 @@ namespace grocery::data
 
         for (const auto &pair : kvStore)
         {
-            // Stop an item name at the first whitespace delimiter.
+            // Find the first configured delimiter in the item name.
             auto pos = pair.first.find_first_of(delimiter);
             if (pos != std::string::npos)
             {
-                // Keep the count after a colon so the report is human-readable.
+                // Emit the prefix and count in the existing report format.
                 stream << pair.first.substr(0, pos) << ":" << pair.second << "\n";
             }
         }
@@ -44,11 +44,11 @@ namespace grocery::data
         {
             if (!line.empty())
             {
-                // Ignore malformed lines that contain no field delimiter.
+                // Ignore lines that do not contain a configured delimiter.
                 auto pos = line.find_first_of(delimiter);
                 if (pos != std::string::npos)
                 {
-                    // The item name is the first field in each input record.
+                    // Only the text before the delimiter becomes the item key.
                     kvStore.addItem(line.substr(0, pos));
                 }
             }

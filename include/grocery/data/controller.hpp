@@ -25,6 +25,9 @@ namespace grocery::data
          * @brief Loads item records from a text file into the shared data store.
          * @param filename Path of the file to read.
          * @throws std::runtime_error If the file cannot be opened.
+         *
+         * Loading adds to the existing singleton store; it does not clear
+         * records that were loaded previously.
          */
         void LoadData(const std::string &filename);
 

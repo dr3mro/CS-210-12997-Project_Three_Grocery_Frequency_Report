@@ -29,6 +29,6 @@ namespace grocery::io
             // Normalize each input record to a newline-separated string.
             data += line + "\n";
         }
-        // RAII closes the stream here, including when the function exits normally.
+        // RAII closes the stream when this local object leaves scope.
     }
 } // namespace grocery::io

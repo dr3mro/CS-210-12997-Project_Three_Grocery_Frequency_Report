@@ -25,6 +25,7 @@ namespace grocery::ui
             std::getline(std::cin >> std::ws, itemName);
 
             // Remove trailing whitespace before comparing or looking up the name.
+            // Leading whitespace was already consumed by std::ws above.
             itemName.erase(itemName.find_last_not_of(" \n\r\t") + 1);
 
             // A leading q is reserved as the dialog's return command.
