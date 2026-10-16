@@ -38,7 +38,10 @@ git push origin v1.0.0
 
 The `Build and publish binaries` workflow also supports manual runs from the
 repository's **Actions** tab. Every push to `main` creates downloadable
-workflow artifacts. Tagged runs publish one asset for each supported
+workflow artifacts. To publish those artifacts as a GitHub Release without
+creating a tag first, manually run the workflow with **Publish the build
+artifacts as a GitHub Release** enabled. You may provide a release tag, or
+leave it blank to use `build-<run number>`. Tagged runs publish one asset for each supported
 operating-system and architecture combination:
 
 ```text
