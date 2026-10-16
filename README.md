@@ -156,11 +156,23 @@ Settings → Pages → Build and deployment → Source: GitHub Actions
 
 Do not select **Deploy from a branch**. That mode makes GitHub run Jekyll
 against the repository's `docs` directory instead of using the Doxygen HTML
-artifact produced by the workflow. If the workflow reports
-`Get Pages site failed` or `Not Found`, Pages has not been enabled for the
-repository yet, or its source is still set to a branch. A repository
-administrator must select **GitHub Actions** in the Pages settings before the
-first deployment.
+artifact produced by the workflow.
+
+The workflow must be selected from the repository's **Actions** tab and run
+after changing the Pages source. If an Actions log contains:
+
+```text
+Source: /github/workspace/./docs
+Error: No such file or directory ... /github/workspace/docs
+```
+
+GitHub is running the branch-based Jekyll publisher, not
+`.github/workflows/docs.yml`. Change the Pages source to **GitHub Actions**,
+save the setting, and rerun the `Publish Doxygen documentation` workflow. If
+the workflow reports `Get Pages site failed` or `Not Found`, Pages has not
+been enabled for the repository yet, or its source is still set to a branch.
+A repository administrator must select **GitHub Actions** in the Pages
+settings before the first deployment.
 
 ## Development commands
 

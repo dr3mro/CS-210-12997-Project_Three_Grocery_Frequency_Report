@@ -33,6 +33,9 @@ jobs:
         run: touch docs/html/.nojekyll
 
       - name: Configure GitHub Pages
+        # This workflow deploys the uploaded Doxygen artifact directly.
+        # The repository Pages source must be set to "GitHub Actions"; if it
+        # is set to a branch, GitHub starts a separate Jekyll build instead.
         uses: actions/configure-pages@v5
 
       - name: Upload documentation artifact
