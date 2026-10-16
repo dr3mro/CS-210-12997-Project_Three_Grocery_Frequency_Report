@@ -17,9 +17,7 @@ namespace grocery::ui
                 std::cout << "Returning to main menu." << std::endl;
                 break;
             }
-            if (itemName == "back")
-            {
-            }
+
             std::string result = dataController.FindItem(itemName);
             std::cout << result << std::endl;
         }

@@ -26,7 +26,8 @@ namespace grocery::ui
         menu.addItem("print a histogram.", []()
                      { std::cout << "You selected Option 3.\n"; });
         menu.addItem("exit.", []()
-                     { std::cout << "Exiting the program.\n"; });
+                     { std::cout << "Exiting the program.\n"; 
+                    exit(0); });
     }
 
     void UIController::ShowMenu() const
