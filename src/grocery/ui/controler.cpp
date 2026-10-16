@@ -1,14 +1,14 @@
-#include "include/grocery/menu/controler.hpp"
+#include "include/grocery/ui/controller.hpp"
 #include <iostream>
 #include <limits>
 
 namespace grocery::ui
 {
-    void MenuController::CreateMenu()
+    void UIController::CreateMenu()
     {
         // Add menu items with their associated actions.
-        menu.addItem("find an item.", []()
-                     { std::cout << "You selected Option 1.\n"; });
+        menu.addItem("find an item.", [this]()
+                     { dialog.FindItem(); });
         menu.addItem("list items and quantaties.", []()
                      { std::cout << "You selected Option 2.\n"; });
         menu.addItem("print a histogram.", []()
@@ -17,12 +17,12 @@ namespace grocery::ui
                      { std::cout << "Exiting the program.\n"; });
     }
 
-    void MenuController::ShowMenu() const
+    void UIController::ShowMenu() const
     {
         menu.ShowMenu();
     }
 
-    void MenuController::ProcessUserChoice()
+    void UIController::ProcessUserChoice()
     {
         int choice;
         while (true)

@@ -1,7 +1,8 @@
 #pragma once
 #include "include/grocery/data/kvstore.hpp"
-#include "include/grocery/io/filecontroler.hpp"
+#include "include/grocery/io/controller.hpp"
 #include "include/grocery/data/serializer.hpp"
+
 namespace grocery::data
 {
     class DataController
@@ -12,6 +13,8 @@ namespace grocery::data
 
         void LoadData(const std::string &filename);
         void SaveData(const std::string &filename) const;
+
+        std::string FindItem(const std::string &key) const;
 
     private:
         grocery::io::FileController fileController;

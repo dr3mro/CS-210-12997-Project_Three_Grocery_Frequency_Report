@@ -3,7 +3,7 @@
 #include <string>
 #include <utility>
 
-#include "grocery/menu/item.hpp"
+#include "grocery/ui/item.hpp"
 namespace grocery::ui
 {
     Item::Item(std::string text, std::function<void()> action)

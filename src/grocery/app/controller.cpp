@@ -1,6 +1,6 @@
 #include "include/grocery/app/controller.hpp"
-#include "include/grocery/data/datacontroller.hpp"
-#include "grocery/menu/controler.hpp"
+#include "include/grocery/data/controller.hpp"
+#include "grocery/ui/controller.hpp"
 namespace grocery::app
 {
 
@@ -10,9 +10,9 @@ namespace grocery::app
         dataController.LoadData(INPUT_FILE);
         dataController.SaveData(OUTPUT_FILE);
 
-        grocery::ui::MenuController menuController;
-        menuController.CreateMenu();
-        menuController.ShowMenu();
-        menuController.ProcessUserChoice();
+        grocery::ui::UIController uiController;
+        uiController.CreateMenu();
+        uiController.ShowMenu();
+        uiController.ProcessUserChoice();
     }
 } // namespace grocery::app

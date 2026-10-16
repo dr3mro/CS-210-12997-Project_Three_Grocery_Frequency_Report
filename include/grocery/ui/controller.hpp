@@ -1,21 +1,22 @@
 #pragma once
 
-#include "grocery/menu/menu.hpp"
-
+#include "grocery/ui/menu.hpp"
+#include "grocery/ui/dialog.hpp"
 namespace grocery::ui
 {
-    class MenuController
+    class UIController
     {
     private:
         Menu menu;
+        Dialog dialog;
 
     public:
-        MenuController() = default;
-        ~MenuController() = default;
+        UIController() = default;
+        ~UIController() = default;
 
         void CreateMenu();
         void ShowMenu() const;
         void ProcessUserChoice();
 
-    }; // class MenuController
+    }; // class UIController
 } // namespace grocery::ui

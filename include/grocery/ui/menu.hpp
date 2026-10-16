@@ -3,7 +3,7 @@
 #include <vector>
 #include <functional>
 
-#include "grocery/menu/item.hpp"
+#include "grocery/ui/item.hpp"
 namespace grocery::ui
 {
     class Menu
