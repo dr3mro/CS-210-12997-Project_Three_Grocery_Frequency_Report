@@ -55,7 +55,9 @@ grocery-windows-arm64.tar.gz
 The archives contain the executable named for the matching platform and
 architecture. Linux x86 and Windows x86 are 32-bit builds. Current macOS SDKs
 no longer support linking 32-bit Intel (`i386`) applications, so macOS
-releases target Intel 64-bit (`x64`) and Apple Silicon (`arm64`) only.
+releases target Intel 64-bit (`x64`) and Apple Silicon (`arm64`) only. The
+macOS x64 build is cross-compiled on the newer macOS runner to avoid the
+limited availability of older Intel runners.
 
 ## Building
 

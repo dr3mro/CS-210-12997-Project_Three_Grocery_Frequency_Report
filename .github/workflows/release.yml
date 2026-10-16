@@ -39,7 +39,7 @@ jobs:
             extension: ""
           - os: macos
             arch: x64
-            runner: macos-13
+            runner: macos-14
             compiler: clang++
             flags: "-arch x86_64"
             extension: ""
