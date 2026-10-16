@@ -30,7 +30,7 @@ jobs:
         run: make docs
 
       - name: Mark documentation as static HTML
-        run: touch docs/html/.nojekyll
+        run: touch docs/.nojekyll
 
       - name: Configure GitHub Pages
         # This workflow deploys the uploaded Doxygen artifact directly.
@@ -41,7 +41,7 @@ jobs:
       - name: Upload documentation artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/html
+          path: docs
 
   deploy:
     needs: build

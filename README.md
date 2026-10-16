@@ -140,7 +140,7 @@ make docs
 The generated site is located at:
 
 ```text
-docs/html/index.html
+docs/index.html
 ```
 
 The `Publish Doxygen documentation` GitHub Actions workflow runs whenever
