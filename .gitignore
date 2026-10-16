@@ -13,7 +13,7 @@
 *.exe
 
 # Generated documentation
-/docs/
+
 
 # Debugger and profiling output
 *.dSYM/
