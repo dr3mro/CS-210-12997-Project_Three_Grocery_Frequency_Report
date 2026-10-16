@@ -3,12 +3,24 @@
 #include "include/grocery/data/kvstore.hpp"
 namespace grocery::data
 {
+    /** @brief Converts the grocery store to and from its text representation. */
     class Serializer
     {
     public:
         Serializer() = default;
         virtual ~Serializer() = default;
+        /**
+         * @brief Serializes item names and counts into a string.
+         * @param kvStore Store whose contents will be serialized.
+         * @param data Output string receiving the serialized records.
+         */
         void Serialize(const KVStore &kvStore, std::string &data) const;
+
+        /**
+         * @brief Deserializes records and adds them to a store.
+         * @param kvStore Store that receives the parsed records.
+         * @param data Text containing serialized records.
+         */
         void Deserialize(KVStore &kvStore, const std::string &data) const;
 
     private:
