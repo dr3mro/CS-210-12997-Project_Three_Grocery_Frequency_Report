@@ -16,6 +16,7 @@ searching and displaying the collected data.
 - Displays an asterisk-based frequency histogram
 - Generates API documentation with Doxygen
 - Publishes generated documentation to GitHub Pages through GitHub Actions
+- Builds and publishes release binaries for Linux, macOS, and Windows
 
 ## Requirements
 
@@ -25,6 +26,35 @@ searching and displaying the collected data.
 - GitHub Actions and GitHub Pages for automatic online documentation publishing
 
 The project has been tested with the compiler and tools available on macOS.
+
+## Binary releases
+
+Create and push a version tag to build and publish compressed binaries:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The `Build and publish binaries` workflow also supports manual runs from the
+repository's **Actions** tab. Tagged runs publish one asset for each supported
+operating-system and architecture combination:
+
+```text
+grocery-linux-x64.tar.gz
+grocery-linux-x86.tar.gz
+grocery-linux-arm64.tar.gz
+grocery-macos-x64.tar.gz
+grocery-macos-arm64.tar.gz
+grocery-windows-x64.tar.gz
+grocery-windows-x86.tar.gz
+grocery-windows-arm64.tar.gz
+```
+
+The archives contain the executable named for the matching platform and
+architecture. Linux x86 and Windows x86 are 32-bit builds. Current macOS SDKs
+no longer support linking 32-bit Intel (`i386`) applications, so macOS
+releases target Intel 64-bit (`x64`) and Apple Silicon (`arm64`) only.
 
 ## Building
 

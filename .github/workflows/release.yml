@@ -1,0 +1,133 @@
+name: Build and publish binaries
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.os }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: linux
+            arch: x64
+            runner: ubuntu-latest
+            compiler: g++
+            flags: ""
+            extension: ""
+          - os: linux
+            arch: x86
+            runner: ubuntu-latest
+            compiler: g++
+            flags: "-m32"
+            extension: ""
+          - os: linux
+            arch: arm64
+            runner: ubuntu-24.04-arm
+            compiler: g++
+            flags: ""
+            extension: ""
+          - os: macos
+            arch: x64
+            runner: macos-13
+            compiler: clang++
+            flags: "-arch x86_64"
+            extension: ""
+          - os: macos
+            arch: arm64
+            runner: macos-14
+            compiler: clang++
+            flags: "-arch arm64"
+            extension: ""
+          - os: windows
+            arch: x64
+            runner: windows-latest
+            msvc_arch: amd64
+            extension: ".exe"
+          - os: windows
+            arch: x86
+            runner: windows-latest
+            msvc_arch: amd64_x86
+            extension: ".exe"
+          - os: windows
+            arch: arm64
+            runner: windows-latest
+            msvc_arch: amd64_arm64
+            extension: ".exe"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Install Linux 32-bit toolchain
+        if: matrix.os == 'linux' && matrix.arch == 'x86'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y g++-multilib
+
+      - name: Configure MSVC
+        if: matrix.os == 'windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.msvc_arch }}
+
+      - name: Build Unix binary
+        if: matrix.os != 'windows'
+        shell: bash
+        run: |
+          mkdir -p dist
+          make clean
+          make release \
+            CXX="${{ matrix.compiler }}" \
+            RELEASE_CXXFLAGS="-std=c++17 -Wall -Wextra -pedantic -O2 ${{ matrix.flags }}" \
+            RELEASE_TARGET="dist/grocery-${{ matrix.os }}-${{ matrix.arch }}"
+
+      - name: Build Windows binary
+        if: matrix.os == 'windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          $sources = @("main.cpp") + (Get-ChildItem -Path src -Recurse -Filter *.cpp | ForEach-Object { $_.FullName })
+          cl.exe /nologo /std:c++17 /EHsc /W4 /O2 /Iinclude /I. $sources `
+            /Fe:"dist\grocery-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+
+      - name: Package binary
+        shell: bash
+        run: |
+          archive="grocery-${{ matrix.os }}-${{ matrix.arch }}"
+          tar -czf "dist/${archive}.tar.gz" -C dist "grocery-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: grocery-${{ matrix.os }}-${{ matrix.arch }}
+          path: dist/grocery-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: grocery-*
+          path: dist
+          merge-multiple: true
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.tar.gz
+          generate_release_notes: true
