@@ -7,13 +7,14 @@ namespace grocery::data
     class KVStore : public std::map<std::string, int>
     {
     public:
-        static KVStore& Instance();
+        static KVStore &Instance();
 
-        KVStore(const KVStore&) = delete;
-        KVStore& operator=(const KVStore&) = delete;
+        KVStore(const KVStore &) = delete;
+        KVStore &operator=(const KVStore &) = delete;
 
         void addItem(const std::string &key);
         int getItem(const std::string &key) const;
+        std::map<std::string, int> getItemsWithQuantaties() const;
 
     private:
         KVStore() = default;

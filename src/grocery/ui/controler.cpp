@@ -7,10 +7,18 @@ namespace grocery::ui
     void UIController::CreateMenu()
     {
         // Add menu items with their associated actions.
-        menu.addItem("find an item.", [this]()
-                     { dialog.FindItem(); });
-        menu.addItem("list items and quantaties.", []()
-                     { std::cout << "You selected Option 2.\n"; });
+        menu.addItem("find an item.",
+                     [this]()
+                     {
+                         dialog.FindItem();
+                         ShowMenu();
+                         ProcessUserChoice();
+                     });
+        menu.addItem("list items and quantaties.", [this]()
+                     {
+                         dialog.ListItemsWithQuantities();
+                         ShowMenu();
+                         ProcessUserChoice(); });
         menu.addItem("print a histogram.", []()
                      { std::cout << "You selected Option 3.\n"; });
         menu.addItem("exit.", []()

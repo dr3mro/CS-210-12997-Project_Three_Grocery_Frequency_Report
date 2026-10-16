@@ -12,5 +12,6 @@ namespace grocery::ui
         virtual ~Dialog() = default;
 
         void FindItem();
+        void ListItemsWithQuantities();
     }; // class Dialog
 } // namespace grocery::ui

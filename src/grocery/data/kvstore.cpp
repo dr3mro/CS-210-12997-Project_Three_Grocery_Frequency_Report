@@ -31,5 +31,9 @@ namespace grocery::data
         }
         return 0;
     }
+    std::map<std::string, int> KVStore::getItemsWithQuantaties() const
+    {
+        return *this;
+    }
 
 } // namespace grocery::io
