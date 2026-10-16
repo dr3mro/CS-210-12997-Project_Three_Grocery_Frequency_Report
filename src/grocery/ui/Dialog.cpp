@@ -12,7 +12,9 @@ namespace grocery::ui
             std::cout << "Enter the name of the item to find (q to return to main menu): ";
             std::getline(std::cin >> std::ws, itemName);
 
-            if (toupper(itemName[0]) == 'Q')
+            itemName.erase(itemName.find_last_not_of(" \n\r\t") + 1);
+            char response;
+            if (!itemName.empty() && toupper(itemName[0]) == 'Q')
             {
                 std::cout << "Returning to main menu." << std::endl;
                 break;
