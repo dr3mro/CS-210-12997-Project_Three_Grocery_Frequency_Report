@@ -21,13 +21,16 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Doxygen
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y doxygen
 
       - name: Generate documentation
         run: make docs
+
+      - name: Mark documentation as static HTML
+        run: touch docs/html/.nojekyll
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
