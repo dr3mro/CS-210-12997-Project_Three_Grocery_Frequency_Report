@@ -1,11 +1,8 @@
 #include <iostream>
-#include "grocery/menu/controler.hpp"
-
+#include "include/grocery/app/controller.hpp"
 int main()
 {
-    grocery::ui::MenuController menuController;
-    menuController.CreateMenu();
-    menuController.ShowMenu();
-    menuController.ProcessUserChoice();
+    grocery::app::AppController appController;
+    appController.Run();
     return 0;
 }

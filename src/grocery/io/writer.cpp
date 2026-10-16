@@ -3,7 +3,7 @@
 #include <string>
 namespace grocery::io
 {
-    void Writer::Write(const std::string &filename, const std::string &data)
+    void Writer::Write(const std::string &filename, const std::string &data) const
     {
         std::ofstream file(filename);
 

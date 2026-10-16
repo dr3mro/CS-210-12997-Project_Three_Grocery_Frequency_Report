@@ -8,7 +8,7 @@ namespace grocery::io
         reader.Read(filename, data);
     }
 
-    void FileController::WriteToFile(const std::string &filename, const std::string &data)
+    void FileController::WriteToFile(const std::string &filename, const std::string &data) const
     {
         writer.Write(filename, data);
     }
