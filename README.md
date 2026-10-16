@@ -169,6 +169,14 @@ The generated site is located at:
 docs/index.html
 ```
 
+The published Doxygen documentation is available online at:
+
+```text
+https://dr3mro.github.io/CS-210-12997-Project_Three_Grocery_Frequency_Report/
+```
+
+[Open the published Doxygen documentation](https://dr3mro.github.io/CS-210-12997-Project_Three_Grocery_Frequency_Report/)
+
 The `Publish Doxygen documentation` GitHub Actions workflow runs whenever
 changes are pushed to the `main` branch. It also supports manual execution
 from the repository's **Actions** tab. The workflow runs `make docs`, packages
