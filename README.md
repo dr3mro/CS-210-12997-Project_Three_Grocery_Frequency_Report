@@ -70,6 +70,32 @@ To remove generated build files:
 make clean
 ```
 
+## Visual Studio
+
+Visual Studio 2026 project files are included for Windows development:
+
+```text
+Grocery.sln
+```
+
+Open `Grocery.sln` in Visual Studio 2026, select `Debug` or `Release` and either
+the `x64` or `ARM64` platform, and build the `Grocery` project. The
+executable is written to:
+
+```text
+build\vs\<Platform>\<Configuration>\grocery.exe
+```
+
+The project uses the repository root as its working directory so
+`CS210_Project_Three_Input_File.txt` is found when launched from Visual
+Studio. The Visual Studio project is an additional build option; the
+Makefile remains the command-line build system for macOS and Unix-like
+environments. Visual Studio preserves each source directory in its
+intermediate object paths so files with the same name, such as the four
+`controller.cpp` files, receive unique intermediate object names and do not
+collide during linking. After changing the project configuration, use
+**Build → Clean Solution**, then **Build → Rebuild Solution**.
+
 ## Running
 
 Run the application with:
