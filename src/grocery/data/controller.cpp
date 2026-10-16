@@ -1,7 +1,5 @@
 #include "include/grocery/data/controller.hpp"
-#include <iostream>
-#include <iomanip>
-#include <sstream>
+
 namespace grocery::data
 {
     void DataController::LoadData(const std::string &filename)
@@ -25,16 +23,8 @@ namespace grocery::data
     }
     std::string DataController::ListItemsWithQuantities() const
     {
-        std::stringstream result;
+
         auto items = kvStore.getItemsWithQuantaties();
-        std::cout << std::string(30, '-') << std::endl;
-        std::cout << std::setw(30) << std::left << "Items with Quantities" << std::endl;
-        std::cout << std::string(30, '-') << std::endl;
-        for (const auto &item : items)
-        {
-            result << std::setw(25) << std::left << item.first << std::setw(4) << std::right << std::to_string(item.second) << std::endl;
-        }
-        result << std::string(30, '-') << std::endl;
-        return result.str().empty() ? "No items found." : result.str();
+        return presenter.FormatItemsWithQuantities(items);
     }
 } // namespace grocery::data

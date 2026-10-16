@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <map>
+
 namespace grocery::data
 {
     class DataPresenter
@@ -9,6 +11,7 @@ namespace grocery::data
         virtual ~DataPresenter() = default;
 
         std::string FormatItemWithQuantity(const std::string &item, int quantity) const;
+        std::string FormatItemsWithQuantities(const std::map<std::string, int> &items) const;
 
     }; // class DataPresenter
 

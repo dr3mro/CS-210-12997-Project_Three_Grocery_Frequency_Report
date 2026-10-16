@@ -4,6 +4,10 @@
 
 namespace grocery::ui
 {
+    void UIController::cleanScreen() const
+    {
+        std::cout << "\033[2J\033[1;1H"; // ANSI escape code to clear the screen and move the cursor to the top-left corner
+    }
     void UIController::CreateMenu()
     {
         // Add menu items with their associated actions.
@@ -27,6 +31,7 @@ namespace grocery::ui
 
     void UIController::ShowMenu() const
     {
+        cleanScreen();
         menu.ShowMenu();
     }
 

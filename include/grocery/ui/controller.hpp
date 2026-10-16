@@ -14,6 +14,7 @@ namespace grocery::ui
         UIController() = default;
         ~UIController() = default;
 
+        void cleanScreen() const;
         void CreateMenu();
         void ShowMenu() const;
         void ProcessUserChoice();
