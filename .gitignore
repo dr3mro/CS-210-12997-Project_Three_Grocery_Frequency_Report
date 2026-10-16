@@ -1,0 +1,44 @@
+# Build output
+/build/
+/bin/
+/obj/
+*.o
+*.obj
+*.d
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Generated documentation
+/docs/
+
+# Debugger and profiling output
+*.dSYM/
+*.gdb_history
+*.lldb
+*.prof
+*.profraw
+
+# IDE and editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/c_cpp_properties.json
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Temporary files
+*.tmp
+*.temp
+*~
