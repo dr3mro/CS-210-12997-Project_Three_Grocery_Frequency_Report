@@ -18,7 +18,7 @@ namespace grocery::io
     void Reader::Read(const std::string &filename, std::string &data)
     {
         std::ifstream file(filename);
-        if (!file.is_open())
+        if (!file)
         {
             // Report the path so the caller can diagnose missing input files.
             throw std::runtime_error("Could not open file for reading: " + filename);

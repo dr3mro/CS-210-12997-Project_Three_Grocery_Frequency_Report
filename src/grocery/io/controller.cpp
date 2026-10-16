@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/io/controller.hpp"
+#include <iostream>
 
 namespace grocery::io
 {
@@ -12,7 +13,16 @@ namespace grocery::io
     {
         // Delegate stream handling to the dedicated reader.
         // Keeping this facade thin lets the data layer avoid stream details.
-        reader.Read(filename, data);
+        try
+        {
+            reader.Read(filename, data);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << std::endl;
+            std::cout << "Press Enter to continue...";
+            std::cin.get();
+        }
     }
 
     /** Route file output through the Writer component. */
@@ -20,6 +30,15 @@ namespace grocery::io
     {
         // Delegate stream handling to the dedicated writer.
         // Writer owns file-open and error handling for output operations.
-        writer.Write(filename, data);
+        try
+        {
+            writer.Write(filename, data);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << std::endl;
+            std::cout << "Press Enter to continue...";
+            std::cin.get();
+        }
     }
 } // namespace grocery::io

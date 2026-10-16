@@ -10,7 +10,15 @@
 int main()
 {
     // The application controller owns the startup and interactive workflow.
-    grocery::app::AppController appController;
-    appController.Run();
-    return 0;
+    try
+    {
+        grocery::app::AppController appController;
+        appController.Run();
+        return 0;
+    }
+    catch (const std::exception &error)
+    {
+        std::cerr << "Application error: " << error.what() << '\n';
+        return 1;
+    }
 }

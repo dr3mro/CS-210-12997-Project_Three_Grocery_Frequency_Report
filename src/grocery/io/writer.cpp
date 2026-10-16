@@ -18,7 +18,7 @@ namespace grocery::io
     {
         std::ofstream file(filename);
 
-        if (!file.is_open())
+        if (!file)
         {
             // Report the path so the caller can diagnose output permissions or paths.
             throw std::runtime_error("Could not open file for writing: " + filename);

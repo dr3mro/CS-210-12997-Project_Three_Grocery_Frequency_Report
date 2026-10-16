@@ -52,6 +52,11 @@ namespace grocery::ui
     {
         // The callback contains the behavior associated with this menu entry.
         // std::function safely stores either a free function or a captured lambda.
+        if (!action)
+        {
+            throw std::invalid_argument("Menu item requires a valid action");
+            return;
+        }
         action();
     }
 

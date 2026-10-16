@@ -40,13 +40,11 @@ namespace grocery::ui
         menu.addItem("list items and quantaties.", [this]()
                      {
                          // Display the tabular report through the dialog layer.
-                         dialog.ListItemsWithQuantities();
-                     });
+                         dialog.ListItemsWithQuantities(); });
         menu.addItem("print a histogram.", [this]()
                      {
                          // Display the frequency bars through the dialog layer.
-                         dialog.PrintHistogram();
-                     });
+                         dialog.PrintHistogram(); });
 
         // Exit does not need controller state, so it uses a non-capturing callback.
         menu.addItem("exit.", []()
@@ -94,12 +92,21 @@ namespace grocery::ui
                 std::cout << "Invalid choice. Please try again.\n";
                 continue;
             }
+            // Convert the user's one-based choice into the menu's zero-based index.
 
             auto item = menu.getItem(choice - 1);
             if (item)
             {
-                // Convert the user's one-based choice into the menu's zero-based index.
-                item->ExecuteAction();
+                try
+                {
+                    item->ExecuteAction();
+                }
+                catch (const std::exception &error)
+                {
+                    std::cerr << "Error executing menu action: " << error.what() << std::endl;
+                    std::cout << "Press Enter to continue...";
+                    std::cin.get();
+                }
                 // Redraw after an action so the next prompt starts at a clean menu.
                 ShowMenu();
             }
