@@ -28,7 +28,14 @@ namespace grocery::ui
         std::string result = dataController.ListItemsWithQuantities();
         std::cout << result;
         std::cout << "Press Enter to return to the main menu...";
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get(); // Wait for user input before returning to the menu
+    }
+
+    void Dialog::PrintHistogram()
+    {
+        std::string result = dataController.GetItemsHistogram();
+        std::cout << result;
+        std::cout << "Press Enter to return to the main menu...";
         std::cin.get(); // Wait for user input before returning to the menu
     }
 } // namespace grocery::ui

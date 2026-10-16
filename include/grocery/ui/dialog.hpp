@@ -13,5 +13,6 @@ namespace grocery::ui
 
         void FindItem();
         void ListItemsWithQuantities();
+        void PrintHistogram();
     }; // class Dialog
 } // namespace grocery::ui

@@ -27,4 +27,9 @@ namespace grocery::data
         auto items = kvStore.getItemsWithQuantaties();
         return presenter.FormatItemsWithQuantities(items);
     }
+    std::string DataController::GetItemsHistogram() const
+    {
+        auto items = kvStore.getItemsWithQuantaties();
+        return presenter.FormatItemsHistogram(items);
+    }
 } // namespace grocery::data

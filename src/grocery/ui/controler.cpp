@@ -1,6 +1,8 @@
 #include "include/grocery/ui/controller.hpp"
 #include <iostream>
 #include <limits>
+#include <sstream>
+#include <string>
 
 namespace grocery::ui
 {
@@ -15,16 +17,11 @@ namespace grocery::ui
                      [this]()
                      {
                          dialog.FindItem();
-                         ShowMenu();
-                         ProcessUserChoice();
                      });
         menu.addItem("list items and quantaties.", [this]()
-                     {
-                         dialog.ListItemsWithQuantities();
-                         ShowMenu();
-                         ProcessUserChoice(); });
-        menu.addItem("print a histogram.", []()
-                     { std::cout << "You selected Option 3.\n"; });
+                     { dialog.ListItemsWithQuantities(); });
+        menu.addItem("print a histogram.", [this]()
+                     { dialog.PrintHistogram(); });
         menu.addItem("exit.", []()
                      { std::cout << "Exiting the program.\n"; 
                     exit(0); });
@@ -38,33 +35,37 @@ namespace grocery::ui
 
     void UIController::ProcessUserChoice()
     {
-        int choice;
+        std::string input;
         while (true)
         {
-            std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << "): ";
-            std::cin >> choice;
+            std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << ", q to quit): ";
+            std::getline(std::cin, input);
 
-            if (std::cin.fail() || choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
+            if (input == "q" || input == "Q")
             {
-                std::cin.clear();                                                   // Clear the error flag
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+                std::cout << "Exiting the program.\n";
+                break;
+            }
+
+            std::istringstream inputStream(input);
+            int choice;
+            char extra;
+            if (!(inputStream >> choice) || (inputStream >> extra) ||
+                choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
+            {
                 std::cout << "Invalid choice. Please try again.\n";
                 continue;
             }
-            // Get the selected item and execute its action.
+
             auto item = menu.getItem(choice - 1);
             if (item)
             {
                 item->ExecuteAction();
+                ShowMenu();
             }
             else
             {
                 std::cerr << "Error: Menu item not found for choice " << choice << std::endl;
-            }
-
-            if (choice == static_cast<int>(menu.GetMenuItemCount()))
-            {
-                break;
             }
         }
     }

@@ -12,6 +12,7 @@ namespace grocery::data
 
         std::string FormatItemWithQuantity(const std::string &item, int quantity) const;
         std::string FormatItemsWithQuantities(const std::map<std::string, int> &items) const;
+        std::string FormatItemsHistogram(const std::map<std::string, int> &items) const;
 
     }; // class DataPresenter
 

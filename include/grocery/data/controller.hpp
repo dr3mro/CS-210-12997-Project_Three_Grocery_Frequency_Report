@@ -16,6 +16,7 @@ namespace grocery::data
 
         std::string FindItem(const std::string &key) const;
         std::string ListItemsWithQuantities() const;
+        std::string GetItemsHistogram() const;
 
     private:
         grocery::io::FileController fileController;
