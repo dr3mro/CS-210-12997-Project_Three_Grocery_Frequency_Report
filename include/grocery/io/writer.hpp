@@ -7,6 +7,6 @@ namespace grocery::io
     public:
         Writer() = default;
         virtual ~Writer() = default;
-        virtual void Write(const std::string &data) = 0;
+        void Write(const std::string &filename, const std::string &data);
     }; // class writer
 } // namespace grocery::io

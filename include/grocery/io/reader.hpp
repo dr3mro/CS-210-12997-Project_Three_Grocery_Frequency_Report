@@ -7,6 +7,6 @@ namespace grocery::io
     public:
         Reader() = default;
         virtual ~Reader() = default;
-        virtual void Read(std::string &data) = 0;
+        void Read(const std::string &filename, std::string &data);
     }; // class Reader
-} // namespace grocery::io
+} // namespace grocery::i
