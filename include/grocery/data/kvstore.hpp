@@ -17,6 +17,9 @@ namespace grocery::data
     {
         bool operator()(const std::string &left, const std::string &right) const
         {
+            // Compare the two strings lexicographically, ignoring case.
+            // instead of using std::tolower on the entire string, we use a lambda to compare characters one by one.
+            // This avoids creating temporary strings and is more efficient.
             return std::lexicographical_compare(
                 left.begin(), left.end(),
                 right.begin(), right.end(),
