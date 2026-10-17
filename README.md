@@ -187,8 +187,28 @@ serialized frequency report produced from the in-memory grocery store.
 ├── CS210_Project_Three_Input_File.txt
 ├── frequency.dat
 ├── Doxyfile                  Doxygen configuration
+├── diagrams/                 Flowchart and class design diagrams
 └── .github/workflows/
     └── docs.yml              GitHub Pages documentation workflow
+```
+
+## Design diagrams
+
+The project includes a flowchart of the application workflow and a class
+design diagram showing the major classes and their relationships.
+
+### Application flowchart
+
+![Grocery application flowchart](diagrams/grocery_flowchart.png)
+
+### Class design diagram
+
+![Grocery class design diagram](diagrams/grocery_class_diagram.png)
+
+The PNG files can be regenerated from their Graphviz source files with:
+
+```bash
+make diagrams
 ```
 
 ## Documentation
@@ -253,8 +273,9 @@ settings before the first deployment.
 | `make run` | Build and run the application |
 | `make build/debug/grocery` | Build the debug executable |
 | `make debug` | Build and launch the debug executable in LLDB or GDB |
+| `make diagrams` | Regenerate the flowchart and class diagram PNG files |
 | `make docs` | Generate Doxygen HTML documentation |
-| `make clean` | Remove the `build` directory |
+| `make clean` | Remove build and generated documentation files |
 
 ## License
 
