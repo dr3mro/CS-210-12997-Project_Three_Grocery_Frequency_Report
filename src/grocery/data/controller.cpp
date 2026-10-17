@@ -7,7 +7,10 @@
 
 namespace grocery::data
 {
-    /** Read raw input, then convert it into store entries. */
+    /**
+     * @brief Read raw grocery records and add them to the shared store.
+     * @param filename Path of the input file.
+     */
     void DataController::LoadData(const std::string &filename)
     {
         std::string data;
@@ -17,7 +20,10 @@ namespace grocery::data
         serializer.Deserialize(kvStore, data);
     }
 
-    /** Serialize the current store and persist the resulting report. */
+    /**
+     * @brief Serialize the shared store and write the resulting report.
+     * @param filename Path of the output file.
+     */
     void DataController::SaveData(const std::string &filename) const
     {
         std::string data;
@@ -28,7 +34,11 @@ namespace grocery::data
         fileController.WriteToFile(filename, data);
     }
 
-    /** Look up one item and delegate its display formatting. */
+    /**
+     * @brief Look up one item and delegate its display formatting.
+     * @param key Item name to search for.
+     * @return Formatted quantity or not-found text.
+     */
     std::string DataController::FindItem(const std::string &key) const
     {
         int count = kvStore.getItem(key);
@@ -36,7 +46,10 @@ namespace grocery::data
         return presenter.FormatItemWithQuantity(key, count);
     }
 
-    /** Create the formatted table view for all stored items. */
+    /**
+     * @brief Create a formatted table containing all stored item counts.
+     * @return Display-ready table text.
+     */
     std::string DataController::ListItemsWithQuantities() const
     {
         // Presenters receive copies rather than direct access to the singleton.
@@ -44,7 +57,10 @@ namespace grocery::data
         return presenter.FormatItemsWithQuantities(items);
     }
 
-    /** Create the formatted histogram view for all stored items. */
+    /**
+     * @brief Create a formatted histogram containing all stored item counts.
+     * @return Display-ready histogram text.
+     */
     std::string DataController::GetItemsHistogram() const
     {
         // Both display modes use the same current frequency snapshot.

@@ -11,13 +11,21 @@
 
 namespace grocery::data
 {
-    /// @brief Determine whether a character is whitespace.
+    /**
+     * @brief Determine whether a character is whitespace.
+     * @param character Character to inspect.
+     * @return true when the character is whitespace; otherwise false.
+     */
     bool Serializer::IsWhitespace(char character)
     {
         return std::isspace(static_cast<unsigned char>(character)) != 0;
     }
 
-    /** Convert each serializable stored item into one text record. */
+    /**
+     * @brief Convert each stored item into one serialized text record.
+     * @param kvStore Store whose entries should be serialized.
+     * @param data Output string replaced with the serialized records.
+     */
     void Serializer::Serialize(const KVStore &kvStore, std::string &data) const
     {
         std::ostringstream stream;

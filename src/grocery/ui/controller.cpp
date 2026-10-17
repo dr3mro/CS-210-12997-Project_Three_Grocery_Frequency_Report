@@ -85,6 +85,7 @@ namespace grocery::ui
             if (input == "q" || input == "Q")
             {
                 std::cout << "Exiting the program.\n";
+                keepRunning = false;
                 break;
             }
 

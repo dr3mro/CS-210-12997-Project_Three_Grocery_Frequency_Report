@@ -9,7 +9,12 @@
 
 namespace grocery::data
 {
-    /** @brief Render one item lookup result. */
+    /**
+     * @brief Render one item's lookup result.
+     * @param item Item name being displayed.
+     * @param quantity Frequency associated with the item.
+     * @return User-facing quantity or not-found message.
+     */
     std::string DataPresenter::FormatItemWithQuantity(const std::string &item, int quantity) const
     {
         if (quantity > 0)
@@ -24,7 +29,11 @@ namespace grocery::data
         }
     }
 
-    /** @brief Render all item counts in a fixed-width table. */
+    /**
+     * @brief Render all item counts in a fixed-width table.
+     * @param items Item names and their frequencies.
+     * @return Complete table formatted for console output.
+     */
     std::string DataPresenter::FormatItemsWithQuantities(const std::map<std::string, int> &items) const
     {
         std::stringstream result;
@@ -47,7 +56,11 @@ namespace grocery::data
         return result.str().empty() ? "No items found." : result.str();
     }
 
-    /** @brief Render all item counts as an asterisk histogram. */
+    /**
+     * @brief Render all item counts as an asterisk histogram.
+     * @param items Item names and their frequencies.
+     * @return Complete histogram formatted for console output.
+     */
     std::string DataPresenter::FormatItemsHistogram(const std::map<std::string, int> &items) const
     {
         std::stringstream result;

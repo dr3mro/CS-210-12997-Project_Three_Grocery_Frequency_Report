@@ -14,7 +14,10 @@ namespace grocery::data
     class DataPresenter
     {
     public:
+        /** @brief Construct a formatter for grocery data views. */
         DataPresenter() = default;
+
+        /** @brief Destroy the grocery data formatter. */
         virtual ~DataPresenter() = default;
 
         /**

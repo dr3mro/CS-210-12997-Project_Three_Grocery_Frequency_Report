@@ -8,14 +8,22 @@
 
 namespace grocery::ui
 {
-    /** Append a fully configured item to the menu's owned collection. */
+    /**
+     * @brief Append a configured item to the menu.
+     * @param text Label displayed for the new item.
+     * @param action Callback invoked when the item is selected.
+     */
     void Menu::addItem(const std::string &text, std::function<void()> action)
     {
         // Store items by value so the menu owns their lifetime.
         items.emplace_back(text, action);
     }
 
-    /** Print the heading followed by each numbered menu item. */
+    /**
+     * @brief Print the menu heading and every numbered menu item.
+     *
+     * Items are printed in the same order in which they were added.
+     */
     void Menu::ShowMenu() const
     {
         std::cout << "Menu:\n";
@@ -26,7 +34,10 @@ namespace grocery::ui
             item.PrintItem();
         }
     }
-    /** Return the number of selectable entries currently stored. */
+    /**
+     * @brief Return the number of selectable entries currently stored.
+     * @return Number of items available in the menu.
+     */
     int Menu::GetMenuItemCount() const
     {
         // Convert the container size to the signed type used by the public API.

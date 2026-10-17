@@ -7,7 +7,10 @@
 
 namespace grocery::data
 {
-    /** Return the lazily initialized process-wide store. */
+    /**
+     * @brief Return the lazily initialized process-wide store.
+     * @return Reference to the single shared key-value store.
+     */
     KVStore &KVStore::Instance()
     {
         // Function-local initialization creates the store on first use.
@@ -16,7 +19,10 @@ namespace grocery::data
         return instance;
     }
 
-    /** Add one occurrence of an item to the frequency map. */
+    /**
+     * @brief Increment an item's frequency or create its first entry.
+     * @param key Item name whose frequency should increase.
+     */
     void KVStore::addItem(const std::string &key)
     {
         // Search first so an existing count can be updated without replacing
@@ -34,7 +40,11 @@ namespace grocery::data
             this->insert({key, 1});
         }
     }
-    /** Return the count for an item without modifying the map. */
+    /**
+     * @brief Look up an item's frequency without modifying the map.
+     * @param key Item name to find.
+     * @return Stored frequency, or zero when the item is absent.
+     */
     int KVStore::getItem(const std::string &key) const
     {
         // Use a non-mutating lookup; operator[] would create a missing entry.
@@ -49,7 +59,10 @@ namespace grocery::data
         return 0;
     }
 
-    /** Return a snapshot of all currently stored item counts. */
+    /**
+     * @brief Return a copy of all currently stored item frequencies.
+     * @return Snapshot of the store's item-count pairs.
+     */
     std::map<std::string, int> KVStore::getItemsWithQuantaties() const
     {
         // Return a copy so callers cannot modify the singleton accidentally.
