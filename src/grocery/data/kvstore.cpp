@@ -43,20 +43,20 @@ namespace grocery::data
     /**
      * @brief Look up an item's frequency without modifying the map.
      * @param key Item name to find.
-     * @return Stored frequency, or zero when the item is absent.
+     * @return Iterator to the item's frequency, or end() when the item is absent.
      */
-    int KVStore::getItem(const std::string &key) const
+    auto KVStore::getItem(const std::string &key) const -> decltype(this->find(key))
     {
         // The comparator makes this non-mutating lookup case-insensitive.
         auto it = find(key);
         if (it != end())
         {
             // Return the count stored for the matching item.
-            return it->second;
+            return it;
         }
 
         // Missing items are represented by a zero count.
-        return 0;
+        return end();
     }
 
     /**

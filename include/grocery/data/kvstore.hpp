@@ -52,9 +52,9 @@ namespace grocery::data
         /**
          * @brief Gets an item's current count.
          * @param key Item name to find.
-         * @return The stored count, or zero when the item is absent.
+         * @return Iterator to the item's frequency, or end() when the item is absent.
          */
-        int getItem(const std::string &key) const;
+        auto getItem(const std::string &key) const -> decltype(this->find(key));
 
         /**
          * @brief Copies all item counts into a standard map.
