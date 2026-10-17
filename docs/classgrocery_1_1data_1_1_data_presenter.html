@@ -121,7 +121,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classgrocery_1
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5dfa62fa690848eab80d3853635bcbac" id="r_a5dfa62fa690848eab80d3853635bcbac"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a5dfa62fa690848eab80d3853635bcbac">DataPresenter</a> ()=default</td></tr>
+<tr class="memdesc:a5dfa62fa690848eab80d3853635bcbac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a formatter for grocery data views.  <br /></td></tr>
 <tr class="memitem:aeb112174e1131119e8f3b790a30ead76" id="r_aeb112174e1131119e8f3b790a30ead76"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#aeb112174e1131119e8f3b790a30ead76">~DataPresenter</a> ()=default</td></tr>
+<tr class="memdesc:aeb112174e1131119e8f3b790a30ead76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the grocery data formatter.  <br /></td></tr>
 <tr class="memitem:a59eac616d08c895cdd7ad61ca4cab9a8" id="r_a59eac616d08c895cdd7ad61ca4cab9a8"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a59eac616d08c895cdd7ad61ca4cab9a8">FormatItemWithQuantity</a> (const std::string &amp;item, int quantity) const</td></tr>
 <tr class="memdesc:a59eac616d08c895cdd7ad61ca4cab9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats one item and its quantity.  <br /></td></tr>
 <tr class="memitem:a417681a034a6ab0866fe4ad211e43abc" id="r_a417681a034a6ab0866fe4ad211e43abc"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a417681a034a6ab0866fe4ad211e43abc">FormatItemsWithQuantities</a> (const std::map&lt; std::string, int &gt; &amp;items) const</td></tr>
@@ -155,6 +157,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Construct a formatter for grocery data views. </p>
+
 </div>
 </div>
 <a id="aeb112174e1131119e8f3b790a30ead76" name="aeb112174e1131119e8f3b790a30ead76"></a>
@@ -179,6 +183,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destroy the grocery data formatter. </p>
 
 </div>
 </div>
@@ -206,7 +212,14 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Formatted histogram text. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted histogram text.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">items</td><td>Item names and their frequencies. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Complete histogram formatted for console output. </dd></dl>
 
 </div>
 </div>
@@ -233,7 +246,14 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Formatted table text. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted table text.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">items</td><td>Item names and their frequencies. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Complete table formatted for console output. </dd></dl>
 
 </div>
 </div>
@@ -257,7 +277,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formats one item and its quantity. </p>
-<p>Render one item lookup result.</p>
+<p>Render one item's lookup result.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">item</td><td>Item name. </td></tr>
@@ -265,7 +285,15 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Formatted quantity text, or a not-found message for zero. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted quantity text, or a not-found message for zero.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Item name being displayed. </td></tr>
+    <tr><td class="paramname">quantity</td><td>Frequency associated with the item. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>User-facing quantity or not-found message. </dd></dl>
 
 </div>
 </div>

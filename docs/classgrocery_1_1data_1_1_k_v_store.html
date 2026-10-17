@@ -189,13 +189,14 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Increments an item's count, adding it when necessary. </p>
+<p>Increment an item's frequency or create its first entry.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>Item name to increment.</td></tr>
+    <tr><td class="paramname">key</td><td>Item name whose frequency should increase. </td></tr>
   </table>
   </dd>
 </dl>
-<p>Add one occurrence of an item to the frequency map. </p>
 
 </div>
 </div>
@@ -215,6 +216,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets an item's current count. </p>
+<p>Look up an item's frequency without modifying the map.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>Item name to find. </td></tr>
@@ -222,7 +224,13 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The stored count, or zero when the item is absent.</dd></dl>
-<p>Return the count for an item without modifying the map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Item name to find. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Stored frequency, or zero when the item is absent. </dd></dl>
 
 </div>
 </div>
@@ -242,8 +250,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Copies all item counts into a standard map. </p>
-<dl class="section return"><dt>Returns</dt><dd>Map containing every stored item and its count.</dd></dl>
-<p>Return a snapshot of all currently stored item counts. </p>
+<p>Return a copy of all currently stored item frequencies.</p>
+<dl class="section return"><dt>Returns</dt><dd>Map containing every stored item and its count.</dd>
+<dd>
+Snapshot of the store's item-count pairs. </dd></dl>
 
 </div>
 </div>
@@ -271,8 +281,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the process-wide data store. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the singleton store.</dd></dl>
-<p>Return the lazily initialized process-wide store. </p>
+<p>Return the lazily initialized process-wide store.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the singleton store.</dd>
+<dd>
+Reference to the single shared key-value store. </dd></dl>
 
 </div>
 </div>

@@ -209,6 +209,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formats the quantity of one item for display. </p>
+<p>Look up one item and delegate its display formatting.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>Item name to look up. </td></tr>
@@ -216,7 +217,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A quantity message, or a not-found message if absent.</dd></dl>
-<p>Look up one item and delegate its display formatting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Item name to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted quantity or not-found text. </dd></dl>
 
 </div>
 </div>
@@ -236,8 +243,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formats every stored item as an asterisk histogram. </p>
-<dl class="section return"><dt>Returns</dt><dd>A display-ready histogram.</dd></dl>
-<p>Create the formatted histogram view for all stored items. </p>
+<p>Create a formatted histogram containing all stored item counts.</p>
+<dl class="section return"><dt>Returns</dt><dd>A display-ready histogram.</dd>
+<dd>
+Display-ready histogram text. </dd></dl>
 
 </div>
 </div>
@@ -257,8 +266,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formats every stored item and its quantity as a table. </p>
-<dl class="section return"><dt>Returns</dt><dd>A display-ready quantity table.</dd></dl>
-<p>Create the formatted table view for all stored items. </p>
+<p>Create a formatted table containing all stored item counts.</p>
+<dl class="section return"><dt>Returns</dt><dd>A display-ready quantity table.</dd>
+<dd>
+Display-ready table text. </dd></dl>
 
 </div>
 </div>
@@ -278,6 +289,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Loads item records from a text file into the shared data store. </p>
+<p>Read raw grocery records and add them to the shared store.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>Path of the file to read. </td></tr>
@@ -291,7 +303,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Loading adds to the existing singleton store; it does not clear records that were loaded previously.</p>
-<p>Read raw input, then convert it into store entries. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Path of the input file. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -311,6 +328,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Serializes the shared data store and writes it to a file. </p>
+<p>Serialize the shared store and write the resulting report.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>Path of the file to write. </td></tr>
@@ -323,7 +341,12 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Serialize the current store and persist the resulting report. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Path of the output file. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

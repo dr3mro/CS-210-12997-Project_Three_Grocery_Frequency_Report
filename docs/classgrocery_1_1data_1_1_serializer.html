@@ -241,6 +241,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Serializes eligible item names and counts into a string. </p>
+<p>Convert each stored item into one serialized text record.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">kvStore</td><td>Store whose contents will be serialized. </td></tr>
@@ -249,7 +250,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Every stored item is emitted as an item-and-count record.</p>
-<p>Convert each serializable stored item into one text record. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kvStore</td><td>Store whose entries should be serialized. </td></tr>
+    <tr><td class="paramname">data</td><td>Output string replaced with the serialized records. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
