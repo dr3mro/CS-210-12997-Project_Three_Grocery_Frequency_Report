@@ -69,11 +69,11 @@ namespace grocery::ui
     void UIController::ProcessUserChoice()
     {
         std::string input;
-        while (true)
+        // here I changed the while tue to while getline.
+        while (std::cout << "Please select menu option (1-" << menu.GetMenuItemCount()
+                         << ", q to quit): " &&
+               std::getline(std::cin, input))
         {
-            std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << ", q to quit): ";
-            std::getline(std::cin, input);
-
             // A letter command bypasses numeric parsing and requests exit.
             if (input == "q" || input == "Q")
             {
