@@ -57,4 +57,4 @@ diagrams/%.png: diagrams/%.dot
 	$(DOT) -Tpng $< -o $@
 
 clean:
-	$(RM) -r build diagrams/*.png docs
+	$(RM) -r build
