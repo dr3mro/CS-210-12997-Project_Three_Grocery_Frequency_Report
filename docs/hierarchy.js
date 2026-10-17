@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "grocery::app::AppController", "classgrocery_1_1app_1_1_app_controller.html", null ],
+    [ "grocery::data::CaseInsensitiveCompare", "structgrocery_1_1data_1_1_case_insensitive_compare.html", null ],
     [ "grocery::data::DataController", "classgrocery_1_1data_1_1_data_controller.html", null ],
     [ "grocery::data::DataPresenter", "classgrocery_1_1data_1_1_data_presenter.html", null ],
     [ "grocery::ui::Dialog", "classgrocery_1_1ui_1_1_dialog.html", null ],

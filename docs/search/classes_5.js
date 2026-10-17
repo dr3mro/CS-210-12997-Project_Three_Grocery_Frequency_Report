@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menu_0',['Menu',['../classgrocery_1_1ui_1_1_menu.html',1,'grocery::ui']]]
+  ['kvstore_0',['KVStore',['../classgrocery_1_1data_1_1_k_v_store.html',1,'grocery::data']]]
 ];

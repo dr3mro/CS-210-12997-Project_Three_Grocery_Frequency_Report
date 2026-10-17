@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writer_0',['Writer',['../classgrocery_1_1io_1_1_writer.html',1,'grocery::io']]]
+  ['uicontroller_0',['UIController',['../classgrocery_1_1ui_1_1_u_i_controller.html',1,'grocery::ui']]]
 ];

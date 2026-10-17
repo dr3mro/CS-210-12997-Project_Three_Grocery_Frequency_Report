@@ -7,11 +7,28 @@
 
 #include <map>
 #include <string>
+#include <algorithm>
+#include <cctype>
 
 namespace grocery::data
 {
+    /** @brief Orders item names without considering letter case. */
+    struct CaseInsensitiveCompare
+    {
+        bool operator()(const std::string &left, const std::string &right) const
+        {
+            return std::lexicographical_compare(
+                left.begin(), left.end(),
+                right.begin(), right.end(),
+                [](unsigned char leftCharacter, unsigned char rightCharacter)
+                {
+                    return std::tolower(leftCharacter) < std::tolower(rightCharacter);
+                });
+        }
+    };
+
     /** @brief Singleton map of grocery item names to occurrence counts. */
-    class KVStore : public std::map<std::string, int>
+    class KVStore : public std::map<std::string, int, CaseInsensitiveCompare>
     {
     public:
         /**

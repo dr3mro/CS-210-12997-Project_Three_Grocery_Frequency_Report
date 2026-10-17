@@ -25,8 +25,8 @@ namespace grocery::data
      */
     void KVStore::addItem(const std::string &key)
     {
-        // Search first so an existing count can be updated without replacing
-        // its map node or changing the key's stored spelling.
+        // The map comparator makes this lookup case-insensitive while
+        // preserving the spelling of the existing map key.
         auto it = find(key);
         if (it != end())
         {
@@ -47,7 +47,7 @@ namespace grocery::data
      */
     int KVStore::getItem(const std::string &key) const
     {
-        // Use a non-mutating lookup; operator[] would create a missing entry.
+        // The comparator makes this non-mutating lookup case-insensitive.
         auto it = find(key);
         if (it != end())
         {
@@ -67,7 +67,7 @@ namespace grocery::data
     {
         // Return a copy so callers cannot modify the singleton accidentally.
         // Presenters therefore work from a stable snapshot of the counts.
-        return *this;
+        return {begin(), end()};
     }
 
 } // namespace grocery::io

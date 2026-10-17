@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classgrocery_1
 </div><!--header-->
 <div class="contents">
 
-<p>Provides interactive dialogs for grocery data operations.  
+<p>Provides interactive dialogs backed by the shared data controller.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dialog_8hpp_source.html">dialog.hpp</a>&gt;</code></p>
@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classgrocery_1
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abdd89b089e87786369ef66ae9ced0c8a" id="r_abdd89b089e87786369ef66ae9ced0c8a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abdd89b089e87786369ef66ae9ced0c8a">Dialog</a> ()=default</td></tr>
-<tr class="memdesc:abdd89b089e87786369ef66ae9ced0c8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a dialog backed by a data controller.  <br /></td></tr>
+<tr class="memdesc:abdd89b089e87786369ef66ae9ced0c8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a dialog using DataController::Instance().  <br /></td></tr>
 <tr class="memitem:a46637bd9152e90edeac4ca8caa5f2d74" id="r_a46637bd9152e90edeac4ca8caa5f2d74"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#a46637bd9152e90edeac4ca8caa5f2d74">~Dialog</a> ()=default</td></tr>
-<tr class="memdesc:a46637bd9152e90edeac4ca8caa5f2d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the dialog and its data controller.  <br /></td></tr>
+<tr class="memdesc:a46637bd9152e90edeac4ca8caa5f2d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the dialog without owning the shared data controller.  <br /></td></tr>
 <tr class="memitem:aca81e82178f963289539233fb1cafb10" id="r_aca81e82178f963289539233fb1cafb10"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aca81e82178f963289539233fb1cafb10">FindItem</a> ()</td></tr>
 <tr class="memdesc:aca81e82178f963289539233fb1cafb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeatedly prompts for an item name and displays its count.  <br /></td></tr>
 <tr class="memitem:a2d61146b8d11af275de55bf3d23260c3" id="r_a2d61146b8d11af275de55bf3d23260c3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2d61146b8d11af275de55bf3d23260c3">ListItemsWithQuantities</a> ()</td></tr>
@@ -132,7 +132,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ada1028fc9b704d85d05ab590c778b0a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the frequency histogram for all stored items.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides interactive dialogs for grocery data operations. </p>
+<div class="textblock"><p>Provides interactive dialogs backed by the shared data controller. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abdd89b089e87786369ef66ae9ced0c8a" name="abdd89b089e87786369ef66ae9ced0c8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abdd89b089e87786369ef66ae9ced0c8a">&#9670;&#160;</a></span>Dialog()</h2>
@@ -157,7 +157,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a dialog backed by a data controller. </p>
+<p>Construct a dialog using DataController::Instance(). </p>
 
 </div>
 </div>
@@ -184,7 +184,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destroy the dialog and its data controller. </p>
+<p>Destroy the dialog without owning the shared data controller. </p>
 
 </div>
 </div>

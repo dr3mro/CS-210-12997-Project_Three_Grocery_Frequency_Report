@@ -5,6 +5,7 @@ var annotated_dup =
         [ "AppController", "classgrocery_1_1app_1_1_app_controller.html", "classgrocery_1_1app_1_1_app_controller" ]
       ] ],
       [ "data", "namespacegrocery_1_1data.html", [
+        [ "CaseInsensitiveCompare", "structgrocery_1_1data_1_1_case_insensitive_compare.html", "structgrocery_1_1data_1_1_case_insensitive_compare" ],
         [ "DataController", "classgrocery_1_1data_1_1_data_controller.html", "classgrocery_1_1data_1_1_data_controller" ],
         [ "DataPresenter", "classgrocery_1_1data_1_1_data_presenter.html", "classgrocery_1_1data_1_1_data_presenter" ],
         [ "KVStore", "classgrocery_1_1data_1_1_k_v_store.html", "classgrocery_1_1data_1_1_k_v_store" ],

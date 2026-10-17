@@ -113,19 +113,19 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classgrocery_1
 </div><!--header-->
 <div class="contents">
 
-<p>Coordinates persistence, storage, and presentation of grocery data.  
+<p>Singleton that coordinates persistence, storage, and presentation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="data_2controller_8hpp_source.html">controller.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aae174b70423b5315c7d7911df6c1c6d6" id="r_aae174b70423b5315c7d7911df6c1c6d6"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aae174b70423b5315c7d7911df6c1c6d6">DataController</a> ()=default</td></tr>
-<tr class="memdesc:aae174b70423b5315c7d7911df6c1c6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a data-operation controller.  <br /></td></tr>
-<tr class="memitem:a370df3f57ee7b73a68785c16487fc211" id="r_a370df3f57ee7b73a68785c16487fc211"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#a370df3f57ee7b73a68785c16487fc211">~DataController</a> ()=default</td></tr>
-<tr class="memdesc:a370df3f57ee7b73a68785c16487fc211"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the data-operation controller.  <br /></td></tr>
+<tr class="memitem:aefaf1161785a6f07b732cc9eb2c2e705" id="r_aefaf1161785a6f07b732cc9eb2c2e705"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> (const DataController &amp;)=delete</td></tr>
+<tr class="memdesc:aefaf1161785a6f07b732cc9eb2c2e705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent copying the process-wide controller.  <br /></td></tr>
+<tr class="memitem:aaae54badfd49349dae07ad3b9113703a" id="r_aaae54badfd49349dae07ad3b9113703a"><td class="memItemLeft"><a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aaae54badfd49349dae07ad3b9113703a">operator=</a> (const <a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aaae54badfd49349dae07ad3b9113703a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent assigning the process-wide controller.  <br /></td></tr>
 <tr class="memitem:ae06582f4fbb76b6b49ce398242652090" id="r_ae06582f4fbb76b6b49ce398242652090"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae06582f4fbb76b6b49ce398242652090">LoadData</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:ae06582f4fbb76b6b49ce398242652090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads item records from a text file into the shared data store.  <br /></td></tr>
+<tr class="memdesc:ae06582f4fbb76b6b49ce398242652090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads item records into the shared singleton data store.  <br /></td></tr>
 <tr class="memitem:afd0df130afe477e8774c3b50546beb19" id="r_afd0df130afe477e8774c3b50546beb19"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afd0df130afe477e8774c3b50546beb19">SaveData</a> (const std::string &amp;filename) const</td></tr>
 <tr class="memdesc:afd0df130afe477e8774c3b50546beb19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the shared data store and writes it to a file.  <br /></td></tr>
 <tr class="memitem:a626b617e864035f82aef8e33bb39bafe" id="r_a626b617e864035f82aef8e33bb39bafe"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a626b617e864035f82aef8e33bb39bafe">FindItem</a> (const std::string &amp;key) const</td></tr>
@@ -134,12 +134,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a21d7ed008e82a300b07a1eef09c38acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats every stored item and its quantity as a table.  <br /></td></tr>
 <tr class="memitem:a364dca223d627868d084bbff0cac3eb3" id="r_a364dca223d627868d084bbff0cac3eb3"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a364dca223d627868d084bbff0cac3eb3">GetItemsHistogram</a> () const</td></tr>
 <tr class="memdesc:a364dca223d627868d084bbff0cac3eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats every stored item as an asterisk histogram.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a019f03a6e10120e6862f33d768e0d0ac" id="r_a019f03a6e10120e6862f33d768e0d0ac"><td class="memItemLeft">static <a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a019f03a6e10120e6862f33d768e0d0ac">Instance</a> ()</td></tr>
+<tr class="memdesc:a019f03a6e10120e6862f33d768e0d0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the process-wide data controller.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Coordinates persistence, storage, and presentation of grocery data. </p>
+<div class="textblock"><p>Singleton that coordinates persistence, storage, and presentation. </p>
+<p>Call <a class="el" href="#a019f03a6e10120e6862f33d768e0d0ac" title="Return the process-wide data controller.">Instance()</a> to access the one controller shared by the application. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aae174b70423b5315c7d7911df6c1c6d6" name="aae174b70423b5315c7d7911df6c1c6d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae174b70423b5315c7d7911df6c1c6d6">&#9670;&#160;</a></span>DataController()</h2>
+<a id="aefaf1161785a6f07b732cc9eb2c2e705" name="aefaf1161785a6f07b732cc9eb2c2e705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefaf1161785a6f07b732cc9eb2c2e705">&#9670;&#160;</a></span>DataController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,45 +156,18 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">grocery::data::DataController::DataController </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const DataController &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel delete">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a data-operation controller. </p>
-
-</div>
-</div>
-<a id="a370df3f57ee7b73a68785c16487fc211" name="a370df3f57ee7b73a68785c16487fc211"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a370df3f57ee7b73a68785c16487fc211">&#9670;&#160;</a></span>~DataController()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual grocery::data::DataController::~DataController </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Destroy the data-operation controller. </p>
+<p>Prevent copying the process-wide controller. </p>
 
 </div>
 </div>
@@ -250,6 +229,37 @@ Display-ready histogram text. </dd></dl>
 
 </div>
 </div>
+<a id="a019f03a6e10120e6862f33d768e0d0ac" name="a019f03a6e10120e6862f33d768e0d0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019f03a6e10120e6862f33d768e0d0ac">&#9670;&#160;</a></span>Instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp; grocery::data::DataController::Instance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the process-wide data controller. </p>
+<p>Return the lazily initialized shared data controller.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the singleton controller.</dd>
+<dd>
+Reference to the one controller used by the application. </dd></dl>
+
+</div>
+</div>
 <a id="a21d7ed008e82a300b07a1eef09c38acc" name="a21d7ed008e82a300b07a1eef09c38acc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21d7ed008e82a300b07a1eef09c38acc">&#9670;&#160;</a></span>ListItemsWithQuantities()</h2>
 
@@ -288,7 +298,7 @@ Display-ready table text. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Loads item records from a text file into the shared data store. </p>
+<p>Loads item records into the shared singleton data store. </p>
 <p>Read raw grocery records and add them to the shared store.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -302,13 +312,40 @@ Display-ready table text. </dd></dl>
   </table>
   </dd>
 </dl>
-<p>Loading adds to the existing singleton store; it does not clear records that were loaded previously.</p>
+<p>Loading adds to the existing store; it does not clear records that were loaded previously.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>Path of the input file. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aaae54badfd49349dae07ad3b9113703a" name="aaae54badfd49349dae07ad3b9113703a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaae54badfd49349dae07ad3b9113703a">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp; grocery::data::DataController::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aefaf1161785a6f07b732cc9eb2c2e705">DataController</a> &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel delete">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prevent assigning the process-wide controller. </p>
 
 </div>
 </div>

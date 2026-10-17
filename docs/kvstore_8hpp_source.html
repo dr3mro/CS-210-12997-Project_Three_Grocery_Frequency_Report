@@ -117,32 +117,52 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('kvstore_8hpp_s
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacegrocery_1_1data.html">grocery::data</a></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html">   14</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> : <span class="keyword">public</span> std::map&lt;std::string, int&gt;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">static</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;<a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a8621e7029b9a21ed8aeb00129e0d7b49">Instance</a>();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">   24</a></span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a>(<span class="keyword">const</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html#a1f0a87a4fc387bb53db6cebe7feed542">   27</a></span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;<a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a1f0a87a4fc387bb53db6cebe7feed542">operator=</a>(<span class="keyword">const</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a97fc2f6acb82d11be3810ca4bd73564f">addItem</a>(<span class="keyword">const</span> std::string &amp;key);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a23f5566c99597214dd6d8027a0a5ed60">getItem</a>(<span class="keyword">const</span> std::string &amp;key) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        std::map&lt;std::string, int&gt; <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#ad07347ff8b24324c633092e831d9ba45">getItemsWithQuantaties</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">~KVStore</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }; <span class="comment">// class KVStore</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;cctype&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacegrocery_1_1data.html">grocery::data</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structgrocery_1_1data_1_1_case_insensitive_compare.html">   16</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structgrocery_1_1data_1_1_case_insensitive_compare.html">CaseInsensitiveCompare</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structgrocery_1_1data_1_1_case_insensitive_compare.html#aa1a623c68a93a1cb5adf0f771bd24ac9">   18</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structgrocery_1_1data_1_1_case_insensitive_compare.html#aa1a623c68a93a1cb5adf0f771bd24ac9">operator()</a>(<span class="keyword">const</span> std::string &amp;left, <span class="keyword">const</span> std::string &amp;right)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keywordflow">return</span> std::lexicographical_compare(</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                left.begin(), left.end(),</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                right.begin(), right.end(),</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> leftCharacter, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> rightCharacter)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    return std::tolower(leftCharacter) &lt; std::tolower(rightCharacter);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                });</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <span class="comment">// namespace grocery::data</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    };</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html">   31</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> : <span class="keyword">public</span> std::map&lt;std::string, int, CaseInsensitiveCompare&gt;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">static</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;<a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a8621e7029b9a21ed8aeb00129e0d7b49">Instance</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">   41</a></span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a>(<span class="keyword">const</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classgrocery_1_1data_1_1_k_v_store.html#a1f0a87a4fc387bb53db6cebe7feed542">   44</a></span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;<a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a1f0a87a4fc387bb53db6cebe7feed542">operator=</a>(<span class="keyword">const</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a97fc2f6acb82d11be3810ca4bd73564f">addItem</a>(<span class="keyword">const</span> std::string &amp;key);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a23f5566c99597214dd6d8027a0a5ed60">getItem</a>(<span class="keyword">const</span> std::string &amp;key) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::map&lt;std::string, int&gt; <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#ad07347ff8b24324c633092e831d9ba45">getItemsWithQuantaties</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">KVStore</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_function" href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">~KVStore</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }; <span class="comment">// class KVStore</span></div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <span class="comment">// namespace grocery::data</span></div>
 <div class="ttc" id="aclassgrocery_1_1data_1_1_k_v_store_html_a1f0a87a4fc387bb53db6cebe7feed542"><div class="ttname"><a href="classgrocery_1_1data_1_1_k_v_store.html#a1f0a87a4fc387bb53db6cebe7feed542">grocery::data::KVStore::operator=</a></div><div class="ttdeci">KVStore &amp; operator=(const KVStore &amp;)=delete</div><div class="ttdoc">Prevent assigning to the process-wide store.</div></div>
 <div class="ttc" id="aclassgrocery_1_1data_1_1_k_v_store_html_a23f5566c99597214dd6d8027a0a5ed60"><div class="ttname"><a href="classgrocery_1_1data_1_1_k_v_store.html#a23f5566c99597214dd6d8027a0a5ed60">grocery::data::KVStore::getItem</a></div><div class="ttdeci">int getItem(const std::string &amp;key) const</div><div class="ttdoc">Gets an item&#39;s current count.</div><div class="ttdef"><b>Definition</b> kvstore.cpp:48</div></div>
 <div class="ttc" id="aclassgrocery_1_1data_1_1_k_v_store_html_a8621e7029b9a21ed8aeb00129e0d7b49"><div class="ttname"><a href="classgrocery_1_1data_1_1_k_v_store.html#a8621e7029b9a21ed8aeb00129e0d7b49">grocery::data::KVStore::Instance</a></div><div class="ttdeci">static KVStore &amp; Instance()</div><div class="ttdoc">Returns the process-wide data store.</div><div class="ttdef"><b>Definition</b> kvstore.cpp:14</div></div>
@@ -150,6 +170,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('kvstore_8hpp_s
 <div class="ttc" id="aclassgrocery_1_1data_1_1_k_v_store_html_a981ca050df7ae42e8a3c4de12e29edfb"><div class="ttname"><a href="classgrocery_1_1data_1_1_k_v_store.html#a981ca050df7ae42e8a3c4de12e29edfb">grocery::data::KVStore::KVStore</a></div><div class="ttdeci">KVStore(const KVStore &amp;)=delete</div><div class="ttdoc">Prevent copying the process-wide store.</div></div>
 <div class="ttc" id="aclassgrocery_1_1data_1_1_k_v_store_html_ad07347ff8b24324c633092e831d9ba45"><div class="ttname"><a href="classgrocery_1_1data_1_1_k_v_store.html#ad07347ff8b24324c633092e831d9ba45">grocery::data::KVStore::getItemsWithQuantaties</a></div><div class="ttdeci">std::map&lt; std::string, int &gt; getItemsWithQuantaties() const</div><div class="ttdoc">Copies all item counts into a standard map.</div><div class="ttdef"><b>Definition</b> kvstore.cpp:66</div></div>
 <div class="ttc" id="anamespacegrocery_1_1data_html"><div class="ttname"><a href="namespacegrocery_1_1data.html">grocery::data</a></div><div class="ttdef"><b>Definition</b> controller.hpp:13</div></div>
+<div class="ttc" id="astructgrocery_1_1data_1_1_case_insensitive_compare_html"><div class="ttname"><a href="structgrocery_1_1data_1_1_case_insensitive_compare.html">grocery::data::CaseInsensitiveCompare</a></div><div class="ttdoc">Orders item names without considering letter case.</div><div class="ttdef"><b>Definition</b> kvstore.hpp:17</div></div>
+<div class="ttc" id="astructgrocery_1_1data_1_1_case_insensitive_compare_html_aa1a623c68a93a1cb5adf0f771bd24ac9"><div class="ttname"><a href="structgrocery_1_1data_1_1_case_insensitive_compare.html#aa1a623c68a93a1cb5adf0f771bd24ac9">grocery::data::CaseInsensitiveCompare::operator()</a></div><div class="ttdeci">bool operator()(const std::string &amp;left, const std::string &amp;right) const</div><div class="ttdef"><b>Definition</b> kvstore.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
