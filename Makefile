@@ -6,13 +6,15 @@ DEBUG_CXXFLAGS   ?= $(CXXFLAGS) -g -O0
 RELEASE_TARGET   ?= build/release/grocery
 DEBUG_TARGET     ?= build/debug/grocery
 DEBUGGER         ?= $(shell command -v lldb 2>/dev/null || command -v gdb 2>/dev/null)
+DOT              ?= dot
 
 SRC       := main.cpp $(shell find src -type f -name '*.cpp' 2>/dev/null)
 RELEASE_OBJ := $(patsubst %.cpp,build/release/obj/%.o,$(SRC))
 DEBUG_OBJ   := $(patsubst %.cpp,build/debug/obj/%.o,$(SRC))
 DEP         := $(RELEASE_OBJ:.o=.d) $(DEBUG_OBJ:.o=.d)
+DIAGRAM_TARGETS := diagrams/grocery_flowchart.png diagrams/grocery_class_diagram.png
 
-.PHONY: all clean release run debug docs
+.PHONY: all clean release run debug docs diagrams
 
 all: release
 
@@ -48,5 +50,11 @@ docs:
 	@mkdir -p docs
 	@doxygen Doxyfile
 
+diagrams: $(DIAGRAM_TARGETS)
+
+diagrams/%.png: diagrams/%.dot
+	@command -v $(DOT) >/dev/null 2>&1 || { echo "Error: Graphviz (dot) is not installed."; exit 1; }
+	$(DOT) -Tpng $< -o $@
+
 clean:
-	$(RM) -r build
+	$(RM) -r build diagrams/*.png docs
