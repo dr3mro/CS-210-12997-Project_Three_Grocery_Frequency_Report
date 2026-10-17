@@ -11,6 +11,7 @@
 
 namespace grocery::data
 {
+    /// @brief Determine whether a character is whitespace.
     bool Serializer::IsWhitespace(char character)
     {
         return std::isspace(static_cast<unsigned char>(character)) != 0;
