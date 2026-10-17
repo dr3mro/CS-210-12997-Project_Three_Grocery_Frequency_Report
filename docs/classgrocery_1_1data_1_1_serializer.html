@@ -131,7 +131,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Converts grocery records to and from the project's text format. </p>
-<p>The current format is line-oriented and uses whitespace as the record delimiter expected by the existing input data. </p>
+<p>The input format is line-oriented: each non-empty line is one grocery item. Serialized output uses the item-and-count format. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abbbc20824d8c8d910b35f0bb607cba14" name="abbbc20824d8c8d910b35f0bb607cba14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abbbc20824d8c8d910b35f0bb607cba14">&#9670;&#160;</a></span>Serializer()</h2>
@@ -216,8 +216,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Empty lines and records without the configured delimiter are ignored. Existing counts are incremented rather than replaced.</p>
-<p>Empty lines are ignored, and records without a recognized delimiter are skipped rather than being inserted as malformed item names. </p>
+<p>Empty and whitespace-only lines are ignored. Existing counts are incremented rather than replaced.</p>
+<p>Empty and whitespace-only lines are ignored. Each remaining line is treated as one complete grocery item. </p>
 
 </div>
 </div>
@@ -248,7 +248,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Item names that do not contain the configured delimiter are not emitted by the current implementation.</p>
+<p>Every stored item is emitted as an item-and-count record.</p>
 <p>Convert each serializable stored item into one text record. </p>
 
 </div>
