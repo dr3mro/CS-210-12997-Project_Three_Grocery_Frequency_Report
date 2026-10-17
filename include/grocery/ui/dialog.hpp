@@ -8,17 +8,20 @@
 #include "grocery/data/controller.hpp"
 namespace grocery::ui
 {
-    /** @brief Provides interactive dialogs for grocery data operations. */
+    /**
+     * @brief Provides interactive dialogs backed by the shared data controller.
+     */
     class Dialog
     {
     private:
-        grocery::data::DataController dataController;
+        grocery::data::DataController &dataController =
+            grocery::data::DataController::Instance();
 
     public:
-        /** @brief Construct a dialog backed by a data controller. */
+        /** @brief Construct a dialog using DataController::Instance(). */
         Dialog() = default;
 
-        /** @brief Destroy the dialog and its data controller. */
+        /** @brief Destroy the dialog without owning the shared data controller. */
         virtual ~Dialog() = default;
 
         /**

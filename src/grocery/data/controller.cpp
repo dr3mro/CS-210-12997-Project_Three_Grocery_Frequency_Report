@@ -8,6 +8,16 @@
 namespace grocery::data
 {
     /**
+     * @brief Return the lazily initialized shared data controller.
+     * @return Reference to the one controller used by the application.
+     */
+    DataController &DataController::Instance()
+    {
+        static DataController instance;
+        return instance;
+    }
+
+    /**
      * @brief Read raw grocery records and add them to the shared store.
      * @param filename Path of the input file.
      */
@@ -52,7 +62,7 @@ namespace grocery::data
      */
     std::string DataController::ListItemsWithQuantities() const
     {
-        // Presenters receive copies rather than direct access to the singleton.
+        // Presenters receive copies rather than direct access to the shared store.
         auto items = kvStore.getItemsWithQuantaties();
         return presenter.FormatItemsWithQuantities(items);
     }

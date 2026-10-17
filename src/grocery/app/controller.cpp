@@ -17,7 +17,8 @@ namespace grocery::app
      */
     void AppController::Run()
     {
-        grocery::data::DataController dataController;
+        // Use the same data controller that the interactive dialogs access.
+        auto &dataController = grocery::data::DataController::Instance();
 
         // Build the initial frequency table from the supplied input file.
         dataController.LoadData(INPUT_FILE);

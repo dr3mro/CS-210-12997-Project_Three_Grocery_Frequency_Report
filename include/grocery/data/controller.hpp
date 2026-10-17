@@ -11,23 +11,33 @@
 #include "include/grocery/data/presenter.hpp"
 namespace grocery::data
 {
-    /** @brief Coordinates persistence, storage, and presentation of grocery data. */
+    /**
+     * @brief Singleton that coordinates persistence, storage, and presentation.
+     *
+     * Call Instance() to access the one controller shared by the application.
+     */
     class DataController
     {
     public:
-        /** @brief Construct a data-operation controller. */
-        DataController() = default;
+        /**
+         * @brief Return the process-wide data controller.
+         * @return Reference to the singleton controller.
+         */
+        static DataController &Instance();
 
-        /** @brief Destroy the data-operation controller. */
-        virtual ~DataController() = default;
+        /** @brief Prevent copying the process-wide controller. */
+        DataController(const DataController &) = delete;
+
+        /** @brief Prevent assigning the process-wide controller. */
+        DataController &operator=(const DataController &) = delete;
 
         /**
-         * @brief Loads item records from a text file into the shared data store.
+         * @brief Loads item records into the shared singleton data store.
          * @param filename Path of the file to read.
          * @throws std::runtime_error If the file cannot be opened.
          *
-         * Loading adds to the existing singleton store; it does not clear
-         * records that were loaded previously.
+         * Loading adds to the existing store; it does not clear records that
+         * were loaded previously.
          */
         void LoadData(const std::string &filename);
 
@@ -58,6 +68,12 @@ namespace grocery::data
         std::string GetItemsHistogram() const;
 
     private:
+        /** @brief Construct the singleton; only Instance() may call this. */
+        DataController() = default;
+
+        /** @brief Destroy the process-wide controller at program termination. */
+        ~DataController() = default;
+
         grocery::io::FileController fileController;
         grocery::data::KVStore &kvStore = grocery::data::KVStore::Instance();
         grocery::data::Serializer serializer;

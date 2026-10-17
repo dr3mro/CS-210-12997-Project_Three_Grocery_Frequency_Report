@@ -29,6 +29,7 @@ digraph GroceryApplicationFlow {
     ];
 
     start [shape=oval, fillcolor="#D5F5E3", color="#239B56", label="Start"];
+    controller [label="Get shared DataController\nsingleton instance"];
     load [label="Read CS210_Project_Three_Input_File.txt"];
     file_ok [shape=diamond, style="filled", fillcolor="#FCF3CF", color="#B7950B",
              label="Input file opened?"];
@@ -62,11 +63,12 @@ digraph GroceryApplicationFlow {
     redraw [label="Return to menu and redraw"];
     exit [shape=oval, fillcolor="#D5F5E3", color="#239B56", label="Exit"];
 
-    start -> load;
+    start -> controller;
+    controller -> load;
     load -> file_ok;
     file_ok -> load_error [label="No"];
     file_ok -> count [label="Yes"];
-    load_error -> exit;
+    load_error -> count [label="Continue with empty input"];
     count -> serialize;
     serialize -> save;
     save -> save_ok;
