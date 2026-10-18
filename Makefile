@@ -2,7 +2,7 @@ CXX       ?= c++
 CXXFLAGS  ?= -std=c++17 -Wall -Wextra -pedantic
 CPPFLAGS  ?= -Iinclude -I.
 RELEASE_CXXFLAGS ?= $(CXXFLAGS) -O2
-DEBUG_CXXFLAGS   ?= $(CXXFLAGS) -g -O0
+DEBUG_CXXFLAGS   ?= $(CXXFLAGS) -g -O0 -std=c++17
 RELEASE_TARGET   ?= build/release/grocery
 DEBUG_TARGET     ?= build/debug/grocery
 DEBUGGER         ?= $(shell command -v lldb 2>/dev/null || command -v gdb 2>/dev/null)

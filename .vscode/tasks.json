@@ -7,7 +7,7 @@
             "command": "make",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "problemMatcher": [
                 "$gcc"
@@ -22,21 +22,6 @@
             "command": "make",
             "args": [
                 "release"
-            ],
-            "group": "build",
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: build debug",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "build/debug/grocery"
             ],
             "group": "build",
             "problemMatcher": [
@@ -104,6 +89,24 @@
                 "clean"
             ],
             "problemMatcher": [],
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Make: build debug",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "build/debug/grocery"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
             "presentation": {
                 "reveal": "always"
             }
