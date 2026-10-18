@@ -8,6 +8,11 @@ DEBUG_TARGET     ?= build/debug/grocery
 DEBUGGER         ?= $(shell command -v lldb 2>/dev/null || command -v gdb 2>/dev/null)
 DOT              ?= dot
 
+# clang can write compile_commands.json pieces with -MJ (GCC can't, so it's skipped there)
+IS_CLANG := $(shell $(CXX) --version 2>/dev/null | grep -qi clang && echo 1)
+MJFLAGS   = $(if $(IS_CLANG),-MJ $@.json)
+COMPDB   := $(if $(IS_CLANG),compile_commands.json)
+
 SRC       := main.cpp $(shell find src -type f -name '*.cpp' 2>/dev/null)
 RELEASE_OBJ := $(patsubst %.cpp,build/release/obj/%.o,$(SRC))
 DEBUG_OBJ   := $(patsubst %.cpp,build/debug/obj/%.o,$(SRC))
@@ -18,7 +23,7 @@ DIAGRAM_TARGETS := diagrams/grocery_flowchart.png diagrams/grocery_class_diagram
 
 all: release
 
-release: $(RELEASE_TARGET)
+release: $(RELEASE_TARGET) $(COMPDB)
 
 $(RELEASE_TARGET): $(RELEASE_OBJ)
 	@mkdir -p $(@D)
@@ -26,7 +31,10 @@ $(RELEASE_TARGET): $(RELEASE_OBJ)
 
 build/release/obj/%.o: %.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) $(RELEASE_CXXFLAGS) -MMD -MP -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(RELEASE_CXXFLAGS) -MMD -MP $(MJFLAGS) -c $< -o $@
+
+compile_commands.json: $(RELEASE_OBJ)
+	@{ echo '['; cat /dev/null $(wildcard $(RELEASE_OBJ:.o=.o.json)) | sed '$$ s/,$$//'; echo ']'; } > $@
 
 $(DEBUG_TARGET): $(DEBUG_OBJ)
 	@mkdir -p $(@D)
