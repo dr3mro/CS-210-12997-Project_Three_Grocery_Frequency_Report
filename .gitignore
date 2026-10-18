@@ -32,7 +32,9 @@
 .idea/
 *.swp
 *.swo
-
+#zed
+.cache/
+compile_commands.json
 # macOS
 .DS_Store
 .AppleDouble
