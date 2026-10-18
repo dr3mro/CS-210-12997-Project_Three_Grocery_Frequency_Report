@@ -1,81 +1,64 @@
-CXX       ?= c++
-CXXFLAGS  ?= -std=c++17 -Wall -Wextra -pedantic
-CPPFLAGS  ?= -Iinclude -I.
-RELEASE_CXXFLAGS ?= $(CXXFLAGS) -O2
-DEBUG_CXXFLAGS   ?= $(CXXFLAGS) -g -O0
-RELEASE_TARGET   ?= build/release/grocery
-DEBUG_TARGET     ?= build/debug/grocery
-DEBUGGER         ?= $(shell command -v lldb 2>/dev/null || command -v gdb 2>/dev/null)
-DOT              ?= dot
+CXX      ?= c++
+CXXFLAGS ?= -std=c++17 -Wall -Wextra -pedantic
+CPPFLAGS ?= -Iinclude -I.
+DEBUGGER ?= $(shell command -v lldb || command -v gdb)
 
-# clang can write compile_commands.json pieces with -MJ (GCC can't, so it's skipped there)
-IS_CLANG := $(shell $(CXX) --version 2>/dev/null | grep -qi clang && echo 1)
-MJFLAGS   = $(if $(IS_CLANG),-MJ $@.json)
-comma    := ,
+SRC         := main.cpp $(shell find src -name '*.cpp')
+RELEASE_OBJ := $(SRC:%.cpp=build/release/obj/%.o)
+DEBUG_OBJ   := $(SRC:%.cpp=build/debug/obj/%.o)
 
-# Merge the per-file pieces for a build ($1 = its object list) into compile_commands.json
-define merge_compdb
-	$(if $(IS_CLANG),@{ echo '['; for f in $(1:.o=.o.json); do [ -f "$$f" ] && cat "$$f"; done | sed '$$ s/$(comma)$$//'; echo ']'; } > compile_commands.json)
-endef
-
-SRC       := main.cpp $(shell find src -type f -name '*.cpp' 2>/dev/null)
-RELEASE_OBJ := $(patsubst %.cpp,build/release/obj/%.o,$(SRC))
-DEBUG_OBJ   := $(patsubst %.cpp,build/debug/obj/%.o,$(SRC))
-DEP         := $(RELEASE_OBJ:.o=.d) $(DEBUG_OBJ:.o=.d)
-DIAGRAM_TARGETS := diagrams/grocery_flowchart.png diagrams/grocery_class_diagram.png
-
-.PHONY: all clean-release clean-debug clean-all build-release build-debug run debug-run docs diagrams
+.PHONY: all build-release build-debug run debug-run clean-release clean-debug clean-all docs diagrams compile_commands.json
 
 all: build-release build-debug
 
-build-release: $(RELEASE_TARGET)
-	$(call merge_compdb,$(RELEASE_OBJ))
+build-release: build/release/grocery compile_commands.json
+build-debug:   build/debug/grocery compile_commands.json
 
-$(RELEASE_TARGET): $(RELEASE_OBJ)
-	@mkdir -p $(@D)
-	$(CXX) $(RELEASE_CXXFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+run: build-release
+	./build/release/grocery
+
+debug-run: build-debug
+	$(or $(DEBUGGER),$(error lldb or gdb is not installed)) build/debug/grocery
+
+# ---- release ----
+build/release/grocery: $(RELEASE_OBJ)
+	$(CXX) $^ -o $@
 
 build/release/obj/%.o: %.cpp Makefile
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) $(RELEASE_CXXFLAGS) -MMD -MP $(MJFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -O2 -MMD -MP -c $< -o $@
 
-build-debug: $(DEBUG_TARGET)
-	$(call merge_compdb,$(DEBUG_OBJ))
-
-$(DEBUG_TARGET): $(DEBUG_OBJ)
-	@mkdir -p $(@D)
-	$(CXX) $(DEBUG_CXXFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+# ---- debug ----
+build/debug/grocery: $(DEBUG_OBJ)
+	$(CXX) $^ -o $@
 
 build/debug/obj/%.o: %.cpp Makefile
 	@mkdir -p $(@D)
-	$(CXX) $(CPPFLAGS) $(DEBUG_CXXFLAGS) -MMD -MP $(MJFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -g -O0 -MMD -MP -c $< -o $@
 
--include $(DEP)
+-include $(RELEASE_OBJ:.o=.d) $(DEBUG_OBJ:.o=.d)
 
-run: build-release
-	./$(RELEASE_TARGET)
+# ---- editor support (clangd): one entry per source file, rewritten on every build ----
+compile_commands.json:
+	@{ echo '['; for f in $(SRC); do \
+	    echo "  {\"directory\": \"$(CURDIR)\", \"file\": \"$$f\", \"command\": \"$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $$f\"},"; \
+	  done | sed '$$ s/,$$//'; echo ']'; } > $@
 
-debug-run: build-debug
-	@test -n "$(DEBUGGER)" && command -v $(DEBUGGER) >/dev/null 2>&1 || { echo "Error: lldb or gdb is not installed."; exit 1; }
-	$(DEBUGGER) $(DEBUG_TARGET)
-
+# ---- docs and diagrams ----
 docs:
-	@command -v doxygen >/dev/null 2>&1 || { echo "Error: doxygen is not installed."; exit 1; }
-	@mkdir -p docs
-	@doxygen Doxyfile
+	doxygen Doxyfile
 
-diagrams: $(DIAGRAM_TARGETS)
+diagrams: diagrams/grocery_flowchart.png diagrams/grocery_class_diagram.png
 
 diagrams/%.png: diagrams/%.dot
-	@command -v $(DOT) >/dev/null 2>&1 || { echo "Error: Graphviz (dot) is not installed."; exit 1; }
-	$(DOT) -Tpng $< -o $@
+	dot -Tpng $< -o $@
 
+# ---- cleaning ----
 clean-release:
-	$(RM) -r build/release
+	rm -rf build/release
 
 clean-debug:
-	$(RM) -r build/debug
+	rm -rf build/debug
 
 clean-all:
-	$(RM) -r build
-	$(RM) compile_commands.json
+	rm -rf build compile_commands.json

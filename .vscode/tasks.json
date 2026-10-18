@@ -1,117 +1,115 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Make: build",
-            "type": "shell",
-            "command": "make",
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: release",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "release"
-            ],
-            "group": "build",
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: run",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "run"
-            ],
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated",
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Make: debug",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "debug"
-            ],
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated",
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Make: docs",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "docs"
-            ],
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: diagrams",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "diagrams"
-            ],
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: clean",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "clean"
-            ],
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always"
-            }
-        },
-        {
-            "label": "Make: build debug",
-            "type": "shell",
-            "command": "make",
-            "args": [
-                "build/debug/grocery"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "presentation": {
-                "reveal": "always"
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Make: all",
+      "type": "shell",
+      "command": "make",
+      "args": ["all"],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: build release",
+      "type": "shell",
+      "command": "make",
+      "args": ["build-release"],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: build debug",
+      "type": "shell",
+      "command": "make",
+      "args": ["build-debug"],
+      "group": {
+        "kind": "build",
+        "isDefault": true,
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: run",
+      "type": "shell",
+      "command": "make",
+      "args": ["run"],
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true,
+      },
+    },
+    {
+      "label": "Make: debug run",
+      "type": "shell",
+      "command": "make",
+      "args": ["debug-run"],
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true,
+      },
+    },
+    {
+      "label": "Make: docs",
+      "type": "shell",
+      "command": "make",
+      "args": ["docs"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: diagrams",
+      "type": "shell",
+      "command": "make",
+      "args": ["diagrams"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: clean release",
+      "type": "shell",
+      "command": "make",
+      "args": ["clean-release"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: clean debug",
+      "type": "shell",
+      "command": "make",
+      "args": ["clean-debug"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+    {
+      "label": "Make: clean all",
+      "type": "shell",
+      "command": "make",
+      "args": ["clean-all"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+      },
+    },
+  ],
 }
