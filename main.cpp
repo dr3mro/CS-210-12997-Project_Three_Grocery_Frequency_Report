@@ -89,10 +89,8 @@ int main()
     // Keep startup orchestration out of main; the controller owns that workflow.
     try
     {
-        grocery::app::AppController appController;
-
         // Run the complete load, save, and interactive-menu sequence.
-        appController.Run();
+        grocery::app::AppController::Run();
 
         // A normal return indicates that no fatal application error occurred.
         return 0;

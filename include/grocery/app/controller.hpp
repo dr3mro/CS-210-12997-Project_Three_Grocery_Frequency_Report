@@ -28,7 +28,7 @@ namespace grocery::app
          * Loads the default input file, writes the frequency report, creates
          * the interactive menu, and processes user selections.
          */
-        void Run();
+        static void Run();
 
     private:
     }; // class AppController
