@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/data/presenter.hpp"
+
 #include <iomanip>
 #include <sstream>
 
@@ -15,7 +16,7 @@ namespace grocery::data
      * @param quantity Frequency associated with the item.
      * @return User-facing quantity or not-found message.
      */
-    std::string DataPresenter::FormatItemWithQuantity(const std::string &item, int quantity) const
+    std::string DataPresenter::FormatItemWithQuantity(const std::string& item, int quantity) const
     {
         if (quantity > 0)
         {
@@ -35,7 +36,7 @@ namespace grocery::data
      * @return Complete table formatted for console output.
      */
     std::string DataPresenter::FormatItemsWithQuantities(
-        const std::map<std::string, int> &items) const
+        const std::map<std::string, int>& items) const
     {
         std::stringstream result;
 
@@ -47,7 +48,7 @@ namespace grocery::data
         result << std::setfill(LINE_FILL);
 
         // std::map iteration keeps the report in alphabetical item order.
-        for (const auto &item : items)
+        for (const auto& item : items)
         {
             // Reserve 25 columns for names and four right-aligned columns for counts.
             result << std::setw(LIST_NAME_WIDTH) << std::left << item.first
@@ -66,7 +67,7 @@ namespace grocery::data
      * @param items Item names and their frequencies.
      * @return Complete histogram formatted for console output.
      */
-    std::string DataPresenter::FormatItemsHistogram(const std::map<std::string, int> &items) const
+    std::string DataPresenter::FormatItemsHistogram(const std::map<std::string, int>& items) const
     {
         std::stringstream result;
 
@@ -78,7 +79,7 @@ namespace grocery::data
         // set empty fill character for the histogram bars
         result << std::setfill(LINE_FILL);
 
-        for (const auto &item : items)
+        for (const auto& item : items)
         {
             // Align the item name, bar, and numeric count for easy comparison.
             result << std::setw(HISTOGRAM_NAME_WIDTH) << std::left << item.first

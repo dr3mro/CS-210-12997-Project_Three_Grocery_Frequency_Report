@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/ui/controller.hpp"
+
 #include <iostream>
 #include <limits>
 #include <sstream>
@@ -112,7 +113,7 @@ namespace grocery::ui
                 {
                     item->ExecuteAction();
                 }
-                catch (const std::exception &error)
+                catch (const std::exception& error)
                 {
                     std::cerr << "Error executing menu action: " << error.what() << std::endl;
                     std::cout << "Press Enter to continue...";

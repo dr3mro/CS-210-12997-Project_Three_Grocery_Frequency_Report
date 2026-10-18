@@ -68,6 +68,7 @@
  */
 
 #include "include/grocery/app/controller.hpp"
+
 #include <iostream>
 
 /**
@@ -96,7 +97,7 @@ int main()
         // A normal return indicates that no fatal application error occurred.
         return 0;
     }
-    catch (const std::exception &error)
+    catch (const std::exception& error)
     {
         // Report the original exception message instead of silently continuing.
         std::cerr << "Application error: " << error.what() << '\n';

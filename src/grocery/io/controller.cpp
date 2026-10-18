@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/io/controller.hpp"
+
 #include <iostream>
 
 namespace grocery::io
@@ -13,7 +14,7 @@ namespace grocery::io
      * @param filename Path of the input file.
      * @param data Output string receiving the file contents.
      */
-    void FileController::ReadFromFile(const std::string &filename, std::string &data)
+    void FileController::ReadFromFile(const std::string& filename, std::string& data)
     {
         // Delegate stream handling to the dedicated reader.
         // Keeping this facade thin lets the data layer avoid stream details.
@@ -21,7 +22,7 @@ namespace grocery::io
         {
             reader.Read(filename, data);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             std::cerr << e.what() << std::endl;
             std::cout << "Press Enter to continue...";
@@ -34,7 +35,7 @@ namespace grocery::io
      * @param filename Path of the output file.
      * @param data Serialized text to write.
      */
-    void FileController::WriteToFile(const std::string &filename, const std::string &data) const
+    void FileController::WriteToFile(const std::string& filename, const std::string& data) const
     {
         // Delegate stream handling to the dedicated writer.
         // Writer owns file-open and error handling for output operations.
@@ -42,7 +43,7 @@ namespace grocery::io
         {
             writer.Write(filename, data);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             std::cerr << e.what() << std::endl;
             std::cout << "Press Enter to continue...";

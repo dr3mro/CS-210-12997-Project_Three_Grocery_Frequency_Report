@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/ui/menu.hpp"
+
 #include <iostream>
 
 namespace grocery::ui
@@ -13,7 +14,7 @@ namespace grocery::ui
      * @param text Label displayed for the new item.
      * @param action Callback invoked when the item is selected.
      */
-    void Menu::addItem(const std::string &text, std::function<void()> action)
+    void Menu::addItem(const std::string& text, std::function<void()> action)
     {
         // Store items by value so the menu owns their lifetime.
         items.emplace_back(text, action);
@@ -28,7 +29,7 @@ namespace grocery::ui
     {
         std::cout << std::endl << "Menu:" << std::endl;
 
-        for (const auto &item : items)
+        for (const auto& item : items)
         {
             // Item controls its own label/index formatting.
             item.PrintItem();
@@ -47,7 +48,7 @@ namespace grocery::ui
      * @brief Return a mutable menu item at a zero-based index.
      * @return The selected item, or nullptr when the index is outside bounds.
      */
-    Item *Menu::getItem(int index)
+    Item* Menu::getItem(int index)
     {
         if (index >= 0 && index < GetMenuItemCount())
         {

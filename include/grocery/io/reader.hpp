@@ -25,6 +25,6 @@ namespace grocery::io
          *
          * Each source line is followed by a newline in the destination.
          */
-        void Read(const std::string &filename, std::string &data);
+        void Read(const std::string& filename, std::string& data);
     }; // class Reader
 } // namespace grocery::io

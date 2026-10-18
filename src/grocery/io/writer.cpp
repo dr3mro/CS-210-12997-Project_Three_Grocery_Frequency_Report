@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/io/writer.hpp"
+
 #include <fstream>
 
 namespace grocery::io
@@ -14,7 +15,7 @@ namespace grocery::io
      * The output stream is closed automatically when it leaves this function,
      * ensuring buffered data is flushed before the call returns.
      */
-    void Writer::Write(const std::string &filename, const std::string &data) const
+    void Writer::Write(const std::string& filename, const std::string& data) const
     {
         std::ofstream file(filename);
 

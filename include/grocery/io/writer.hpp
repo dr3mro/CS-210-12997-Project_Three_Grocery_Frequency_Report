@@ -26,6 +26,6 @@ namespace grocery::io
          * Stream failures that occur after opening are reported by the
          * underlying stream state and are not converted here.
          */
-        void Write(const std::string &filename, const std::string &data) const;
+        void Write(const std::string& filename, const std::string& data) const;
     }; // class writer
 } // namespace grocery::io

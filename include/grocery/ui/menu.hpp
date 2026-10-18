@@ -5,10 +5,10 @@
  * @brief Public interface for the interactive menu collection.
  */
 
+#include "grocery/ui/item.hpp"
+
 #include <functional>
 #include <vector>
-
-#include "grocery/ui/item.hpp"
 namespace grocery::ui
 {
     /** @brief Collection of numbered interactive menu items. */
@@ -28,7 +28,7 @@ namespace grocery::ui
          * @param text Text displayed for the item.
          * @param action Function executed when selected.
          */
-        void addItem(const std::string &text, std::function<void()> action);
+        void addItem(const std::string& text, std::function<void()> action);
 
         /** @brief Prints every menu item. */
         void ShowMenu() const;
@@ -41,6 +41,6 @@ namespace grocery::ui
          * @param index Index of the requested item.
          * @return Pointer to the item, or nullptr when the index is invalid.
          */
-        Item *getItem(int index);
+        Item* getItem(int index);
     }; // class Menu
 } // namespace grocery::ui

@@ -6,10 +6,10 @@
  */
 
 /** @brief Default input file containing one grocery item per line. */
-constexpr const char *INPUT_FILE = "CS210_Project_Three_Input_File.txt";
+constexpr const char* INPUT_FILE = "CS210_Project_Three_Input_File.txt";
 
 /** @brief Default output file for the serialized item frequencies. */
-constexpr const char *OUTPUT_FILE = "frequency.dat";
+constexpr const char* OUTPUT_FILE = "frequency.dat";
 
 namespace grocery::app
 {

@@ -23,13 +23,13 @@ namespace grocery::data
          * @brief Return the process-wide data controller.
          * @return Reference to the singleton controller.
          */
-        static DataController &Instance();
+        static DataController& Instance();
 
         /** @brief Prevent copying the process-wide controller. */
-        DataController(const DataController &) = delete;
+        DataController(const DataController&) = delete;
 
         /** @brief Prevent assigning the process-wide controller. */
-        DataController &operator=(const DataController &) = delete;
+        DataController& operator=(const DataController&) = delete;
 
         /**
          * @brief Loads item records into the shared singleton data store.
@@ -39,21 +39,21 @@ namespace grocery::data
          * Loading adds to the existing store; it does not clear records that
          * were loaded previously.
          */
-        void LoadData(const std::string &filename);
+        void LoadData(const std::string& filename);
 
         /**
          * @brief Serializes the shared data store and writes it to a file.
          * @param filename Path of the file to write.
          * @throws std::runtime_error If the file cannot be opened.
          */
-        void SaveData(const std::string &filename) const;
+        void SaveData(const std::string& filename) const;
 
         /**
          * @brief Formats the quantity of one item for display.
          * @param key Item name to look up.
          * @return A quantity message, or a not-found message if absent.
          */
-        std::string FindItem(const std::string &key) const;
+        std::string FindItem(const std::string& key) const;
 
         /**
          * @brief Formats every stored item and its quantity as a table.
@@ -75,7 +75,7 @@ namespace grocery::data
         ~DataController() = default;
 
         grocery::io::FileController fileController;
-        grocery::data::KVStore &kvStore = grocery::data::KVStore::Instance();
+        grocery::data::KVStore& kvStore = grocery::data::KVStore::Instance();
         grocery::data::Serializer serializer;
         grocery::data::DataPresenter presenter;
 

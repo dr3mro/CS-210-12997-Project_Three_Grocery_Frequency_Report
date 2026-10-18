@@ -15,7 +15,7 @@ namespace grocery::data
     /** @brief Orders item names without considering letter case. */
     struct CaseInsensitiveCompare
     {
-        bool operator()(const std::string &left, const std::string &right) const
+        bool operator()(const std::string& left, const std::string& right) const
         {
             // Compare the two strings lexicographically, ignoring case.
             // instead of using std::tolower on the entire string, we use a lambda to
@@ -36,26 +36,26 @@ namespace grocery::data
          * @brief Returns the process-wide data store.
          * @return Reference to the singleton store.
          */
-        static KVStore &Instance();
+        static KVStore& Instance();
 
         /** @brief Prevent copying the process-wide store. */
-        KVStore(const KVStore &) = delete;
+        KVStore(const KVStore&) = delete;
 
         /** @brief Prevent assigning to the process-wide store. */
-        KVStore &operator=(const KVStore &) = delete;
+        KVStore& operator=(const KVStore&) = delete;
 
         /**
          * @brief Increments an item's count, adding it when necessary.
          * @param key Item name to increment.
          */
-        void addItem(const std::string &key);
+        void addItem(const std::string& key);
 
         /**
          * @brief Gets an item's current count.
          * @param key Item name to find.
          * @return Iterator to the item's frequency, or end() when the item is absent.
          */
-        auto getItem(const std::string &key) const -> decltype(this->find(key));
+        auto getItem(const std::string& key) const -> decltype(this->find(key));
 
         /**
          * @brief Copies all item counts into a standard map.

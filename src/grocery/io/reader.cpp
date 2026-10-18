@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/io/reader.hpp"
+
 #include <fstream>
 #include <string>
 
@@ -15,7 +16,7 @@ namespace grocery::io
      * Each extracted line receives a newline in the destination string so
      * the serializer can process the same record-oriented representation.
      */
-    void Reader::Read(const std::string &filename, std::string &data)
+    void Reader::Read(const std::string& filename, std::string& data)
     {
         std::ifstream file(filename);
         if (!file)

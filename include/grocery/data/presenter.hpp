@@ -41,21 +41,21 @@ namespace grocery::data
          * @param quantity Item count.
          * @return Formatted quantity text, or a not-found message for zero.
          */
-        std::string FormatItemWithQuantity(const std::string &item, int quantity) const;
+        std::string FormatItemWithQuantity(const std::string& item, int quantity) const;
 
         /**
          * @brief Formats item counts as an aligned table.
          * @param items Items and their counts.
          * @return Formatted table text.
          */
-        std::string FormatItemsWithQuantities(const std::map<std::string, int> &items) const;
+        std::string FormatItemsWithQuantities(const std::map<std::string, int>& items) const;
 
         /**
          * @brief Formats item counts as an asterisk histogram.
          * @param items Items and their counts.
          * @return Formatted histogram text.
          */
-        std::string FormatItemsHistogram(const std::map<std::string, int> &items) const;
+        std::string FormatItemsHistogram(const std::map<std::string, int>& items) const;
 
     }; // class DataPresenter
 

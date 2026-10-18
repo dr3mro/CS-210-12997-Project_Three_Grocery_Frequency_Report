@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/app/controller.hpp"
+
 #include "grocery/ui/controller.hpp"
 #include "include/grocery/data/controller.hpp"
 
@@ -18,7 +19,7 @@ namespace grocery::app
     void AppController::Run()
     {
         // Use the same data controller that the interactive dialogs access.
-        auto &dataController = grocery::data::DataController::Instance();
+        auto& dataController = grocery::data::DataController::Instance();
 
         // Build the initial frequency table from the supplied input file.
         dataController.LoadData(INPUT_FILE);

@@ -14,7 +14,7 @@ namespace grocery::ui
     class Dialog
     {
     private:
-        grocery::data::DataController &dataController = grocery::data::DataController::Instance();
+        grocery::data::DataController& dataController = grocery::data::DataController::Instance();
 
     public:
         /** @brief Construct a dialog using DataController::Instance(). */

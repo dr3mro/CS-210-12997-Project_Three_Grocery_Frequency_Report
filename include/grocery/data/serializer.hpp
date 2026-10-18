@@ -6,6 +6,7 @@
  */
 
 #include "include/grocery/data/kvstore.hpp"
+
 #include <string>
 namespace grocery::data
 {
@@ -30,7 +31,7 @@ namespace grocery::data
          *
          * Every stored item is emitted as an item-and-count record.
          */
-        void Serialize(const KVStore &kvStore, std::string &data) const;
+        void Serialize(const KVStore& kvStore, std::string& data) const;
 
         /**
          * @brief Deserializes eligible records and adds them to a store.
@@ -40,7 +41,7 @@ namespace grocery::data
          * Empty and whitespace-only lines are ignored.
          * Existing counts are incremented rather than replaced.
          */
-        void Deserialize(KVStore &kvStore, const std::string &data) const;
+        void Deserialize(KVStore& kvStore, const std::string& data) const;
 
     private:
         /**

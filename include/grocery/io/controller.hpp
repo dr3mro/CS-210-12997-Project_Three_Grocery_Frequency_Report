@@ -26,7 +26,7 @@ namespace grocery::io
          * @param data Output string receiving the file contents.
          * @throws std::runtime_error If the file cannot be opened.
          */
-        virtual void ReadFromFile(const std::string &filename, std::string &data);
+        virtual void ReadFromFile(const std::string& filename, std::string& data);
 
         /**
          * @brief Writes a string to a file.
@@ -34,7 +34,7 @@ namespace grocery::io
          * @param data Text to write.
          * @throws std::runtime_error If the file cannot be opened.
          */
-        virtual void WriteToFile(const std::string &filename, const std::string &data) const;
+        virtual void WriteToFile(const std::string& filename, const std::string& data) const;
 
     private:
         Reader reader;

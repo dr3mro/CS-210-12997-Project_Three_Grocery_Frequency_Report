@@ -11,7 +11,7 @@ namespace grocery::data
      * @brief Return the lazily initialized shared data controller.
      * @return Reference to the one controller used by the application.
      */
-    DataController &DataController::Instance()
+    DataController& DataController::Instance()
     {
         static DataController instance;
         return instance;
@@ -21,7 +21,7 @@ namespace grocery::data
      * @brief Read raw grocery records and add them to the shared store.
      * @param filename Path of the input file.
      */
-    void DataController::LoadData(const std::string &filename)
+    void DataController::LoadData(const std::string& filename)
     {
         std::string data;
         // Read the whole file first so parsing remains independent of streams.
@@ -34,7 +34,7 @@ namespace grocery::data
      * @brief Serialize the shared store and write the resulting report.
      * @param filename Path of the output file.
      */
-    void DataController::SaveData(const std::string &filename) const
+    void DataController::SaveData(const std::string& filename) const
     {
         std::string data;
         // Serialization is kept separate from file I/O so both responsibilities
@@ -49,7 +49,7 @@ namespace grocery::data
      * @param key Item name to search for.
      * @return Formatted quantity or not-found text.
      */
-    std::string DataController::FindItem(const std::string &key) const
+    std::string DataController::FindItem(const std::string& key) const
     {
         auto item = kvStore.getItem(key);
         if (item == kvStore.end())

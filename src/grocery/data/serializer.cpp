@@ -26,11 +26,11 @@ namespace grocery::data
      * @param kvStore Store whose entries should be serialized.
      * @param data Output string replaced with the serialized records.
      */
-    void Serializer::Serialize(const KVStore &kvStore, std::string &data) const
+    void Serializer::Serialize(const KVStore& kvStore, std::string& data) const
     {
         std::ostringstream stream;
 
-        for (const auto &pair : kvStore)
+        for (const auto& pair : kvStore)
         {
             // Each map entry is already one complete grocery item.
             stream << pair.first << ":" << pair.second << "\n";
@@ -45,7 +45,7 @@ namespace grocery::data
      * Empty and whitespace-only lines are ignored. Each remaining line is
      * treated as one complete grocery item.
      */
-    void Serializer::Deserialize(KVStore &kvStore, const std::string &data) const
+    void Serializer::Deserialize(KVStore& kvStore, const std::string& data) const
     {
         std::istringstream stream(data);
 

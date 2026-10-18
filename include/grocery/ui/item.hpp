@@ -28,7 +28,7 @@ namespace grocery::ui
         ~Item() = default;
 
         /** @return The item's display text. */
-        const std::string &GetText() const;
+        const std::string& GetText() const;
 
         /**
          * @brief Executes the item's callback.

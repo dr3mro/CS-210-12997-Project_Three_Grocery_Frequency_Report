@@ -16,21 +16,34 @@ BreakBeforeBraces: Allman
 
 # Line length and wrapping
 ColumnLimit: 100
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLambdasOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 LambdaBodyIndentation: OuterScope
 
-# Pointers and references stick to the name: KVStore &store
-PointerAlignment: Right
-ReferenceAlignment: Right
+# Pointers and references stick to the type: const std::string &key
+PointerAlignment: Left
+ReferenceAlignment: Left
 
-# Includes: keep project headers grouped, sorted
+# Constructor initializer lists
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+
+# Templates
+AlwaysBreakTemplateDeclarations: Yes
+
+# Includes: keep project headers grouped, sorted case-sensitively
 SortIncludes:
   IgnoreCase: false
-IncludeBlocks: Preserve
+IncludeBlocks: Regroup
 
-# Comments
+# Spacing
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: false
+SpaceInEmptyParentheses: false
+
+# Comments — do not reflow Doxygen blocks
 FixNamespaceComments: true
 SpacesBeforeTrailingComments: 1
 ReflowComments: Always

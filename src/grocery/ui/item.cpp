@@ -3,12 +3,12 @@
  * @brief Implements menu-item callbacks and display behavior.
  */
 
+#include "grocery/ui/item.hpp"
+
 #include <functional>
 #include <iostream>
 #include <string>
 #include <utility>
-
-#include "grocery/ui/item.hpp"
 
 namespace grocery::ui
 {
@@ -36,7 +36,7 @@ namespace grocery::ui
      * The reference remains valid while this Item object is alive and its
      * text member is not modified.
      */
-    const std::string &Item::GetText() const
+    const std::string& Item::GetText() const
     {
         // Expose the stored label without transferring ownership or copying it.
         return text;

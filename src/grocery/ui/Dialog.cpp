@@ -4,6 +4,7 @@
  */
 
 #include "include/grocery/ui/dialog.hpp"
+
 #include <cctype>
 #include <iostream>
 #include <string>
