@@ -5,9 +5,9 @@
  * @brief Public file-I/O facade used by the data layer.
  */
 
-#include <string>
 #include <grocery/io/reader.hpp>
 #include <grocery/io/writer.hpp>
+#include <string>
 
 namespace grocery::io
 {

@@ -31,25 +31,28 @@ namespace grocery::ui
     void UIController::CreateMenu()
     {
         // Each callback captures this controller so it can invoke its dialog.
-        menu.addItem("find an item.",
-                     [this]()
-                     {
-                         // Delegate the lookup loop to the dialog layer.
-                         dialog.FindItem();
-                     });
+        menu.addItem("find an item.", [this]()
+        {
+            // Delegate the lookup loop to the dialog layer.
+            dialog.FindItem();
+        });
         menu.addItem("list items and quantaties.", [this]()
-                     {
-                         // Display the tabular report through the dialog layer.
-                         dialog.ListItemsWithQuantities(); });
+        {
+            // Display the tabular report through the dialog layer.
+            dialog.ListItemsWithQuantities();
+        });
         menu.addItem("print a histogram.", [this]()
-                     {
-                         // Display the frequency bars through the dialog layer.
-                         dialog.PrintHistogram(); });
+        {
+            // Display the frequency bars through the dialog layer.
+            dialog.PrintHistogram();
+        });
 
         // Exit does not need controller state, so it uses a non-capturing callback.
         menu.addItem("exit.", []()
-                     { std::cout << "Exiting the program.\n"; 
-                    exit(0); });
+        {
+            std::cout << "Exiting the program.\n";
+            exit(0);
+        });
     }
 
     /** Clear the terminal and render the current menu entries. */
@@ -94,8 +97,8 @@ namespace grocery::ui
             char extra;
 
             // Reject empty input, trailing characters, and out-of-range numbers.
-            if (!(inputStream >> choice) || (inputStream >> extra) ||
-                choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
+            if (!(inputStream >> choice) || (inputStream >> extra) || choice < 1 ||
+                choice > static_cast<int>(menu.GetMenuItemCount()))
             {
                 std::cout << "Invalid choice. Please try again.\n";
                 continue;

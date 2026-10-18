@@ -70,4 +70,4 @@ namespace grocery::data
         return {begin(), end()};
     }
 
-} // namespace grocery::io
+} // namespace grocery::data

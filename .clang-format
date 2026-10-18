@@ -1,0 +1,36 @@
+# clang-format rules for the Grocery project (matches the existing code style)
+BasedOnStyle: Microsoft
+Language: Cpp
+Standard: c++17
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+NamespaceIndentation: All
+AccessModifierOffset: -4
+IndentCaseLabels: true
+
+# Braces on their own line (Allman style)
+BreakBeforeBraces: Allman
+
+# Line length and wrapping
+ColumnLimit: 100
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+LambdaBodyIndentation: OuterScope
+
+# Pointers and references stick to the name: KVStore &store
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+# Includes: keep project headers grouped, sorted
+SortIncludes:
+  IgnoreCase: false
+IncludeBlocks: Preserve
+
+# Comments
+FixNamespaceComments: true
+SpacesBeforeTrailingComments: 1
+ReflowComments: Always

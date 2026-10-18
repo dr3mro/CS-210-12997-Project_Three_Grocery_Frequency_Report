@@ -5,8 +5,8 @@
  * @brief Public interface for the interactive console controller.
  */
 
-#include "grocery/ui/menu.hpp"
 #include "grocery/ui/dialog.hpp"
+#include "grocery/ui/menu.hpp"
 namespace grocery::ui
 {
     /** @brief Creates and runs the application's interactive console menu. */

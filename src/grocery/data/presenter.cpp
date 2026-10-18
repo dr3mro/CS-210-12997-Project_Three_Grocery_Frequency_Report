@@ -34,7 +34,8 @@ namespace grocery::data
      * @param items Item names and their frequencies.
      * @return Complete table formatted for console output.
      */
-    std::string DataPresenter::FormatItemsWithQuantities(const std::map<std::string, int> &items) const
+    std::string DataPresenter::FormatItemsWithQuantities(
+        const std::map<std::string, int> &items) const
     {
         std::stringstream result;
 
@@ -49,7 +50,9 @@ namespace grocery::data
         for (const auto &item : items)
         {
             // Reserve 25 columns for names and four right-aligned columns for counts.
-            result << std::setw(LIST_NAME_WIDTH) << std::left << item.first << std::setw(COUNT_WIDTH) << std::right << std::to_string(item.second) << std::endl;
+            result << std::setw(LIST_NAME_WIDTH) << std::left << item.first
+                   << std::setw(COUNT_WIDTH) << std::right << std::to_string(item.second)
+                   << std::endl;
         }
 
         // Close the table after the final record.
@@ -78,7 +81,10 @@ namespace grocery::data
         for (const auto &item : items)
         {
             // Align the item name, bar, and numeric count for easy comparison.
-            result << std::setw(HISTOGRAM_NAME_WIDTH) << std::left << item.first << std::setw(COUNT_WIDTH) << std::right << std::setw(BAR_WIDTH) << std::right << std::string(item.second, BAR_FILL) << SPACE << std::left << "[" << std::setw(2) << std::right << item.second << "] ";
+            result << std::setw(HISTOGRAM_NAME_WIDTH) << std::left << item.first
+                   << std::setw(COUNT_WIDTH) << std::right << std::setw(BAR_WIDTH) << std::right
+                   << std::string(item.second, BAR_FILL) << SPACE << std::left << "["
+                   << std::setw(2) << std::right << item.second << "] ";
             result << std::endl;
         }
 

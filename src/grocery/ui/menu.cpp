@@ -26,8 +26,7 @@ namespace grocery::ui
      */
     void Menu::ShowMenu() const
     {
-        std::cout << std::endl
-                  << "Menu:" << std::endl;
+        std::cout << std::endl << "Menu:" << std::endl;
 
         for (const auto &item : items)
         {

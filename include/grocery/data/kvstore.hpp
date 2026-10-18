@@ -5,10 +5,10 @@
  * @brief Shared in-memory storage for grocery item frequencies.
  */
 
-#include <map>
-#include <string>
 #include <algorithm>
 #include <cctype>
+#include <map>
+#include <string>
 
 namespace grocery::data
 {
@@ -18,15 +18,13 @@ namespace grocery::data
         bool operator()(const std::string &left, const std::string &right) const
         {
             // Compare the two strings lexicographically, ignoring case.
-            // instead of using std::tolower on the entire string, we use a lambda to compare characters one by one.
-            // This avoids creating temporary strings and is more efficient.
+            // instead of using std::tolower on the entire string, we use a lambda to
+            // compare characters one by one. This avoids creating temporary strings and
+            // is more efficient.
             return std::lexicographical_compare(
-                left.begin(), left.end(),
-                right.begin(), right.end(),
+                left.begin(), left.end(), right.begin(), right.end(),
                 [](unsigned char leftCharacter, unsigned char rightCharacter)
-                {
-                    return std::tolower(leftCharacter) < std::tolower(rightCharacter);
-                });
+            { return std::tolower(leftCharacter) < std::tolower(rightCharacter); });
         }
     };
 

@@ -4,9 +4,9 @@
  */
 
 #include "include/grocery/ui/dialog.hpp"
+#include <cctype>
 #include <iostream>
 #include <string>
-#include <cctype>
 
 namespace grocery::ui
 {
@@ -36,7 +36,8 @@ namespace grocery::ui
             }
 
             std::string result = dataController.FindItem(itemName);
-            // Print the already-formatted result without duplicating presentation rules.
+            // Print the already-formatted result without duplicating presentation
+            // rules.
             std::cout << result << std::endl;
         }
     }

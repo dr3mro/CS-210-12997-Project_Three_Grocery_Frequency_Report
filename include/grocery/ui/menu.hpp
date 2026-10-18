@@ -5,8 +5,8 @@
  * @brief Public interface for the interactive menu collection.
  */
 
-#include <vector>
 #include <functional>
+#include <vector>
 
 #include "grocery/ui/item.hpp"
 namespace grocery::ui

@@ -4,8 +4,8 @@
  */
 
 #include "include/grocery/app/controller.hpp"
-#include "include/grocery/data/controller.hpp"
 #include "grocery/ui/controller.hpp"
+#include "include/grocery/data/controller.hpp"
 
 namespace grocery::app
 {

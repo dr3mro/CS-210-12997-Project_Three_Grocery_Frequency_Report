@@ -67,8 +67,8 @@
  * The generated HTML homepage is `docs/html/index.html`.
  */
 
-#include <iostream>
 #include "include/grocery/app/controller.hpp"
+#include <iostream>
 
 /**
  * @brief Starts the Grocery frequency-report application.

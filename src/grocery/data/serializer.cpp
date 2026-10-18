@@ -59,8 +59,7 @@ namespace grocery::data
                 line.pop_back();
             }
 
-            if (!line.empty() &&
-                !std::all_of(line.begin(), line.end(), IsWhitespace))
+            if (!line.empty() && !std::all_of(line.begin(), line.end(), IsWhitespace))
             {
                 kvStore.addItem(line);
             }

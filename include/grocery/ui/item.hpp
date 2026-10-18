@@ -5,8 +5,8 @@
  * @brief Public interface for an individual menu item.
  */
 
-#include <string>
 #include <functional>
+#include <string>
 
 namespace grocery::ui
 {
