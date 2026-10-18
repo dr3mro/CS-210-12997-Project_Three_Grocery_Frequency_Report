@@ -39,19 +39,21 @@ namespace grocery::data
         std::stringstream result;
 
         // The three header lines establish the table's visual boundary.
-        result << std::string(30, '-') << std::endl;
-        result << std::setw(30) << std::left << "Items with Quantities" << std::endl;
-        result << std::string(30, '-') << std::endl;
+        result << std::string(LIST_WIDTH, '-') << std::endl;
+        result << std::setw(LIST_WIDTH) << std::left << "Items with Quantities" << std::endl;
+        result << std::string(LIST_WIDTH, '-') << std::endl;
+
+        result << std::setfill(LINE_FILL);
 
         // std::map iteration keeps the report in alphabetical item order.
         for (const auto &item : items)
         {
             // Reserve 25 columns for names and four right-aligned columns for counts.
-            result << std::setw(25) << std::left << item.first << std::setw(4) << std::right << std::to_string(item.second) << std::endl;
+            result << std::setw(LIST_NAME_WIDTH) << std::left << item.first << std::setw(COUNT_WIDTH) << std::right << std::to_string(item.second) << std::endl;
         }
 
         // Close the table after the final record.
-        result << std::string(30, '-') << std::endl;
+        result << std::string(LIST_WIDTH, '-') << std::endl;
         // Keep the fallback for future callers that may pass an empty stream.
         return result.str().empty() ? "No items found." : result.str();
     }
@@ -66,20 +68,22 @@ namespace grocery::data
         std::stringstream result;
 
         // The histogram uses a wider frame to leave room for the bars.
-        result << std::string(50, '-') << std::endl;
-        result << std::setw(50) << std::left << "Items Histogram" << std::endl;
-        result << std::string(50, '-') << std::endl;
+        result << std::string(HISTOGRAM_WIDTH, '-') << std::endl;
+        result << std::setw(HISTOGRAM_WIDTH) << std::left << "Items Histogram" << std::endl;
+        result << std::string(HISTOGRAM_WIDTH, '-') << std::endl;
 
-        // One asterisk represents one occurrence of the item.
+        // set empty fill character for the histogram bars
+        result << std::setfill(LINE_FILL);
+
         for (const auto &item : items)
         {
             // Align the item name, bar, and numeric count for easy comparison.
-            result << std::setw(25) << std::left << item.first << std::setw(4) << std::right << std::setw(20) << std::right << std::string(item.second, '*')  << ' '<< std::left << "[" << std::setw(2) << std::right << item.second << "] ";
+            result << std::setw(HISTOGRAM_NAME_WIDTH) << std::left << item.first << std::setw(COUNT_WIDTH) << std::right << std::setw(BAR_WIDTH) << std::right << std::string(item.second, BAR_FILL) << SPACE << std::left << "[" << std::setw(2) << std::right << item.second << "] ";
             result << std::endl;
         }
 
         // Close the histogram after all bars have been written.
-        result << std::string(50, '-') << std::endl;
+        result << std::string(HISTOGRAM_WIDTH, '-') << std::endl;
         // Return the complete assembled view as one printable string.
         return result.str().empty() ? "No items found." : result.str();
     }
