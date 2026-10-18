@@ -106,6 +106,13 @@ To remove generated build files:
 make clean
 ```
 
+## Visual Studio Code tasks
+
+The Makefile targets are available from **Terminal → Run Task** in Visual
+Studio Code. The default build task is `Make: build`; the other available
+tasks are `Make: release`, `Make: build debug`, `Make: run`, `Make: debug`,
+`Make: docs`, `Make: diagrams`, and `Make: clean`.
+
 ## Visual Studio
 
 Visual Studio 2026 project files are included for Windows development:
