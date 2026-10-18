@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['read_0',['Read',['../classgrocery_1_1io_1_1_reader.html#a5f68b9a652b536778d1881df40c57eb9',1,'grocery::io::Reader']]],
-  ['reader_1',['Reader',['../classgrocery_1_1io_1_1_reader.html',1,'grocery::io::Reader'],['../classgrocery_1_1io_1_1_reader.html#a7f425576be67391529cb03b07ba8c06b',1,'grocery::io::Reader::Reader()']]],
-  ['reader_2ecpp_2',['reader.cpp',['../reader_8cpp.html',1,'']]],
-  ['reader_2ehpp_3',['reader.hpp',['../reader_8hpp.html',1,'']]],
-  ['readfromfile_4',['ReadFromFile',['../classgrocery_1_1io_1_1_file_controller.html#a2e05109e0c9ca247823b940a351a6abf',1,'grocery::io::FileController']]],
-  ['report_5',['Grocery Frequency Report',['../index.html',1,'']]],
-  ['run_6',['Run',['../classgrocery_1_1app_1_1_app_controller.html#ae980ab6951fad962b60f41edea79496f',1,'grocery::app::AppController']]]
+  ['presenter_2ecpp_0',['presenter.cpp',['../presenter_8cpp.html',1,'']]],
+  ['presenter_2ehpp_1',['presenter.hpp',['../presenter_8hpp.html',1,'']]],
+  ['printhistogram_2',['PrintHistogram',['../classgrocery_1_1ui_1_1_dialog.html#ada1028fc9b704d85d05ab590c778b0a9',1,'grocery::ui::Dialog']]],
+  ['printitem_3',['PrintItem',['../classgrocery_1_1ui_1_1_item.html#ae1839e1ead281978d89e9f976debbbf5',1,'grocery::ui::Item']]],
+  ['processuserchoice_4',['ProcessUserChoice',['../classgrocery_1_1ui_1_1_u_i_controller.html#a04ae9b9504077de7fa11d3baf5574ee2',1,'grocery::ui::UIController']]]
 ];

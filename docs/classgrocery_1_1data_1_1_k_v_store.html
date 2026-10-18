@@ -132,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1f0a87a4fc387bb53db6cebe7feed542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent assigning to the process-wide store.  <br /></td></tr>
 <tr class="memitem:a97fc2f6acb82d11be3810ca4bd73564f" id="r_a97fc2f6acb82d11be3810ca4bd73564f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a97fc2f6acb82d11be3810ca4bd73564f">addItem</a> (const std::string &amp;key)</td></tr>
 <tr class="memdesc:a97fc2f6acb82d11be3810ca4bd73564f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments an item's count, adding it when necessary.  <br /></td></tr>
-<tr class="memitem:a23f5566c99597214dd6d8027a0a5ed60" id="r_a23f5566c99597214dd6d8027a0a5ed60"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a23f5566c99597214dd6d8027a0a5ed60">getItem</a> (const std::string &amp;key) const</td></tr>
-<tr class="memdesc:a23f5566c99597214dd6d8027a0a5ed60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an item's current count.  <br /></td></tr>
+<tr class="memitem:a51b91acf42689d15bb4f89c6bae70aa9" id="r_a51b91acf42689d15bb4f89c6bae70aa9"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a51b91acf42689d15bb4f89c6bae70aa9">getItem</a> (const std::string &amp;key) const -&gt; decltype(this-&gt;find(key))</td></tr>
+<tr class="memdesc:a51b91acf42689d15bb4f89c6bae70aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an item's current count.  <br /></td></tr>
 <tr class="memitem:ad07347ff8b24324c633092e831d9ba45" id="r_ad07347ff8b24324c633092e831d9ba45"><td class="memItemLeft">std::map&lt; std::string, int &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad07347ff8b24324c633092e831d9ba45">getItemsWithQuantaties</a> () const</td></tr>
 <tr class="memdesc:ad07347ff8b24324c633092e831d9ba45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies all item counts into a standard map.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -200,17 +200,17 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a23f5566c99597214dd6d8027a0a5ed60" name="a23f5566c99597214dd6d8027a0a5ed60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23f5566c99597214dd6d8027a0a5ed60">&#9670;&#160;</a></span>getItem()</h2>
+<a id="a51b91acf42689d15bb4f89c6bae70aa9" name="a51b91acf42689d15bb4f89c6bae70aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51b91acf42689d15bb4f89c6bae70aa9">&#9670;&#160;</a></span>getItem()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int grocery::data::KVStore::getItem </td>
+          <td class="memname">auto grocery::data::KVStore::getItem </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; decltype(this-&gt;find(key))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -223,14 +223,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The stored count, or zero when the item is absent.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td>Item name to find. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Stored frequency, or zero when the item is absent. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator to the item's frequency, or end() when the item is absent. </dd></dl>
 
 </div>
 </div>

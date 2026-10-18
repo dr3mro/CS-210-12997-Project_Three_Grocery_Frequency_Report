@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['input_5ffile_0',['INPUT_FILE',['../app_2controller_8hpp.html#ae90eb37e7c6be7a0dbb98b31ec08ea6e',1,'controller.hpp']]]
+  ['bar_5ffill_0',['BAR_FILL',['../namespacegrocery_1_1data.html#a2c62935c8778ef321725a49528b97cba',1,'grocery::data']]],
+  ['bar_5fwidth_1',['BAR_WIDTH',['../namespacegrocery_1_1data.html#ae0d67e49104ff5eabbe977c9793985e4',1,'grocery::data']]]
 ];

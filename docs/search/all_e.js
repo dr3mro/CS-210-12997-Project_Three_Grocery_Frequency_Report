@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['savedata_0',['SaveData',['../classgrocery_1_1data_1_1_data_controller.html#afd0df130afe477e8774c3b50546beb19',1,'grocery::data::DataController']]],
-  ['serialize_1',['Serialize',['../classgrocery_1_1data_1_1_serializer.html#aaaa42731db64e9ac589a678c30731001',1,'grocery::data::Serializer']]],
-  ['serializer_2',['Serializer',['../classgrocery_1_1data_1_1_serializer.html',1,'grocery::data::Serializer'],['../classgrocery_1_1data_1_1_serializer.html#abbbc20824d8c8d910b35f0bb607cba14',1,'grocery::data::Serializer::Serializer()']]],
-  ['serializer_2ecpp_3',['serializer.cpp',['../serializer_8cpp.html',1,'']]],
-  ['serializer_2ehpp_4',['serializer.hpp',['../serializer_8hpp.html',1,'']]],
-  ['showmenu_5',['ShowMenu',['../classgrocery_1_1ui_1_1_u_i_controller.html#aa2b320e45aa9f95c848ef3f80bdea2bc',1,'grocery::ui::UIController::ShowMenu()'],['../classgrocery_1_1ui_1_1_menu.html#a5a12e63e2fa51fea1e51fa4f4949c03b',1,'grocery::ui::Menu::ShowMenu()']]]
+  ['read_0',['Read',['../classgrocery_1_1io_1_1_reader.html#a5f68b9a652b536778d1881df40c57eb9',1,'grocery::io::Reader']]],
+  ['reader_1',['Reader',['../classgrocery_1_1io_1_1_reader.html',1,'grocery::io::Reader'],['../classgrocery_1_1io_1_1_reader.html#a7f425576be67391529cb03b07ba8c06b',1,'grocery::io::Reader::Reader()']]],
+  ['reader_2ecpp_2',['reader.cpp',['../reader_8cpp.html',1,'']]],
+  ['reader_2ehpp_3',['reader.hpp',['../reader_8hpp.html',1,'']]],
+  ['readfromfile_4',['ReadFromFile',['../classgrocery_1_1io_1_1_file_controller.html#a2e05109e0c9ca247823b940a351a6abf',1,'grocery::io::FileController']]],
+  ['report_5',['Grocery Frequency Report',['../index.html',1,'']]],
+  ['run_6',['Run',['../classgrocery_1_1app_1_1_app_controller.html#ae980ab6951fad962b60f41edea79496f',1,'grocery::app::AppController']]]
 ];
