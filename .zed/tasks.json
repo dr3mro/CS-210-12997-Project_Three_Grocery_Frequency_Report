@@ -1,0 +1,64 @@
+[
+  {
+    "label": "Make: all",
+    "command": "make",
+    "args": ["all"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: build release",
+    "command": "make",
+    "args": ["build-release"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: build debug",
+    "command": "make",
+    "args": ["build-debug"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: run",
+    "command": "make",
+    "args": ["run"],
+    "hide": "on_success",
+    "use_new_terminal": true,
+  },
+  {
+    "label": "Make: debug run",
+    "command": "make",
+    "args": ["debug-run"],
+    "hide": "never",
+    "use_new_terminal": true,
+  },
+  {
+    "label": "Make: docs",
+    "command": "make",
+    "args": ["docs"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: diagrams",
+    "command": "make",
+    "args": ["diagrams"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: clean release",
+    "command": "make",
+    "args": ["clean-release"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: clean debug",
+    "command": "make",
+    "args": ["clean-debug"],
+    "hide": "on_success",
+  },
+  {
+    "label": "Make: clean all",
+    "command": "make",
+    "args": ["clean-all"],
+    "hide": "on_success",
+  },
+]
