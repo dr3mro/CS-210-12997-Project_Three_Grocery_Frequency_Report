@@ -96,12 +96,14 @@ jobs:
         if: matrix.os != 'windows'
         shell: bash
         run: |
-          mkdir -p dist
-          make clean-release
-          make build-release \
-            CXX="${{ matrix.compiler }}" \
-            RELEASE_CXXFLAGS="-std=c++17 -Wall -Wextra -pedantic -O2 ${{ matrix.flags }}" \
-            RELEASE_TARGET="dist/grocery-${{ matrix.os }}-${{ matrix.arch }}"
+          name: Build Unix binary
+          if: matrix.os != 'windows'
+          shell: bash
+          run: |
+            mkdir -p dist
+            make clean-all
+            make build-release CXX="${{ matrix.compiler }} ${{ matrix.flags }}"
+            cp build/release/grocery "dist/grocery-${{ matrix.os }}-${{ matrix.arch }}"
 
       - name: Build Windows binary
         if: matrix.os == 'windows'
