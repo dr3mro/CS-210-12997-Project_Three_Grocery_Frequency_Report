@@ -47,16 +47,19 @@ namespace grocery::ui
     /**
      * @brief Return a mutable menu item at a zero-based index.
      * @return The selected item, or nullptr when the index is outside bounds.
+     * @param index Zero-based position in the container.
      */
     Item* Menu::getItem(int index)
     {
+        // check for valid index.
         if (index >= 0 && index < GetMenuItemCount())
         {
-            // Bounds checking above makes this pointer safe while the menu lives.
-            return &items[index];
+            // return a reference to the item at that position.
+            return &items.at(index);
         }
         // Returning nullptr lets the caller report an invalid selection safely.
         std::cerr << "Index out of bounds: " << index << std::endl;
+        // Return a null pointer so no item is executed.
         return nullptr;
     }
 } // namespace grocery::ui
