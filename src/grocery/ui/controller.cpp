@@ -76,8 +76,7 @@ namespace grocery::ui
         bool keepRunning = true;
         do
         {
-            std::cout << "Please select menu option (1-" << menu.GetMenuItemCount()
-                      << ", q to quit): ";
+            std::cout << "Please select menu option (1-" << menu.GetMenuItemCount() << ", q to quit): ";
 
             if (!std::getline(std::cin, input))
             {
@@ -98,8 +97,7 @@ namespace grocery::ui
             char extra;
 
             // Reject empty input, trailing characters, and out-of-range numbers.
-            if (!(inputStream >> choice) || (inputStream >> extra) || choice < 1 ||
-                choice > static_cast<int>(menu.GetMenuItemCount()))
+            if (!(inputStream >> choice) || (inputStream >> extra) || choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
             {
                 std::cout << "Invalid choice. Please try again.\n";
                 continue;

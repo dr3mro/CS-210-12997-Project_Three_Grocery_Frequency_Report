@@ -21,9 +21,8 @@ namespace grocery::data
             // instead of using std::tolower on the entire string, we use a lambda to
             // compare characters one by one. This avoids creating temporary strings and
             // is more efficient.
-            return std::lexicographical_compare(
-                left.begin(), left.end(), right.begin(), right.end(),
-                [](unsigned char leftCharacter, unsigned char rightCharacter)
+            return std::lexicographical_compare(left.begin(), left.end(), right.begin(), right.end(),
+                                                [](unsigned char leftCharacter, unsigned char rightCharacter)
             { return std::tolower(leftCharacter) < std::tolower(rightCharacter); });
         }
     };

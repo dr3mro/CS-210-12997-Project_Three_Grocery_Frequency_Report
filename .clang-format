@@ -15,7 +15,7 @@ IndentCaseLabels: true
 BreakBeforeBraces: Allman
 
 # Line length and wrapping
-ColumnLimit: 100
+ColumnLimit: 160
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortLambdasOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: Never

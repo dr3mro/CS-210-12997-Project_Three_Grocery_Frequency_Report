@@ -22,8 +22,7 @@ namespace grocery::ui
         // replace while true with variable to prevent infinite loops
 
         std::string itemName;
-        while (std::cout << "Enter the name of the item to find (q to return to main menu): " &&
-               std::getline(std::cin >> std::ws, itemName))
+        while (std::cout << "Enter the name of the item to find (q to return to main menu): " && std::getline(std::cin >> std::ws, itemName))
         {
 
             // Remove trailing whitespace before comparing or looking up the name.
