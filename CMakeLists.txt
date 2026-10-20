@@ -28,6 +28,13 @@ target_include_directories(grocery PRIVATE
     ${CMAKE_SOURCE_DIR}
 )
 
+# Expose the compilation database at build/ so clangd finds it without a per-preset path.
+if(NOT WIN32)
+    file(REMOVE ${CMAKE_SOURCE_DIR}/build/compile_commands.json)
+    file(CREATE_LINK ${CMAKE_BINARY_DIR}/compile_commands.json
+         ${CMAKE_SOURCE_DIR}/build/compile_commands.json SYMBOLIC)
+endif()
+
 # ---- docs and diagrams ----
 find_program(DOXYGEN_EXECUTABLE doxygen)
 if(DOXYGEN_EXECUTABLE)

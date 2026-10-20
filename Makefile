@@ -40,9 +40,11 @@ build/debug/obj/%.o: %.cpp Makefile
 
 # ---- editor support (clangd): one entry per source file, rewritten on every build ----
 compile_commands.json:
+	@mkdir -p build
+	@rm -f build/compile_commands.json
 	@{ echo '['; for f in $(SRC); do \
 	    echo "  {\"directory\": \"$(CURDIR)\", \"file\": \"$$f\", \"command\": \"$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $$f\"},"; \
-	  done | sed '$$ s/,$$//'; echo ']'; } > $@
+	  done | sed '$$ s/,$$//'; echo ']'; } > build/compile_commands.json
 
 # ---- docs and diagrams ----
 docs:
@@ -61,4 +63,4 @@ clean-debug:
 	rm -rf build/debug
 
 clean-all:
-	rm -rf build compile_commands.json
+	rm -rf build

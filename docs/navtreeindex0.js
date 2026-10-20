@@ -12,8 +12,6 @@ var NAVTREEINDEX0 =
 "classgrocery_1_1app_1_1_app_controller.html":[2,0,0,0,0],
 "classgrocery_1_1app_1_1_app_controller.html#aae8ce622c33761432ac918145bad5df5":[1,0,0,0,0,1],
 "classgrocery_1_1app_1_1_app_controller.html#aae8ce622c33761432ac918145bad5df5":[2,0,0,0,0,1],
-"classgrocery_1_1app_1_1_app_controller.html#ae980ab6951fad962b60f41edea79496f":[1,0,0,0,0,2],
-"classgrocery_1_1app_1_1_app_controller.html#ae980ab6951fad962b60f41edea79496f":[2,0,0,0,0,2],
 "classgrocery_1_1app_1_1_app_controller.html#aedff2eadda777dcb2beffbbfc7a4855a":[1,0,0,0,0,0],
 "classgrocery_1_1app_1_1_app_controller.html#aedff2eadda777dcb2beffbbfc7a4855a":[2,0,0,0,0,0],
 "classgrocery_1_1data_1_1_data_controller.html":[1,0,0,1,1],
