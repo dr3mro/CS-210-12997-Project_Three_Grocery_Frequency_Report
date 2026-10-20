@@ -6,7 +6,6 @@
 #include "include/grocery/ui/controller.hpp"
 
 #include <iostream>
-#include <limits>
 #include <sstream>
 #include <string>
 
@@ -18,6 +17,7 @@ namespace grocery::ui
      * The escape sequence clears the visible screen and moves the cursor to
      * row one, column one before the menu is printed.
      */
+    // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
     void UIController::cleanScreen() const
     {
         // ANSI commands clear the screen and move the cursor to row 1, column 1.
@@ -97,15 +97,15 @@ namespace grocery::ui
             char extra;
 
             // Reject empty input, trailing characters, and out-of-range numbers.
-            if (!(inputStream >> choice) || (inputStream >> extra) || choice < 1 || choice > static_cast<int>(menu.GetMenuItemCount()))
+            if (!(inputStream >> choice) || (inputStream >> extra) || choice < 1 || choice > menu.GetMenuItemCount())
             {
-                std::cout << "Invalid choice. Please try again.\n";
+                std::cout << "Invalid choice. Please try again." << std::endl;
                 continue;
             }
             // Convert the user's one-based choice into the menu's zero-based index.
 
-            auto item = menu.getItem(choice - 1);
-            if (item)
+            auto* item = menu.getItem(choice - 1);
+            if (item != nullptr)
             {
                 try
                 {

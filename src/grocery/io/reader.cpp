@@ -16,6 +16,7 @@ namespace grocery::io
      * Each extracted line receives a newline in the destination string so
      * the serializer can process the same record-oriented representation.
      */
+    // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
     void Reader::Read(const std::string& filename, std::string& data)
     {
         std::ifstream file(filename);

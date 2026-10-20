@@ -26,6 +26,7 @@ namespace grocery::data
      * @param kvStore Store whose entries should be serialized.
      * @param data Output string replaced with the serialized records.
      */
+    // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
     void Serializer::Serialize(const KVStore& kvStore, std::string& data) const
     {
         std::ostringstream stream;
@@ -45,6 +46,7 @@ namespace grocery::data
      * Empty and whitespace-only lines are ignored. Each remaining line is
      * treated as one complete grocery item.
      */
+    // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
     void Serializer::Deserialize(KVStore& kvStore, const std::string& data) const
     {
         std::istringstream stream(data);

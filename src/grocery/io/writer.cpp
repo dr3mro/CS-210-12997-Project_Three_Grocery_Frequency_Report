@@ -15,6 +15,7 @@ namespace grocery::io
      * The output stream is closed automatically when it leaves this function,
      * ensuring buffered data is flushed before the call returns.
      */
+    // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
     void Writer::Write(const std::string& filename, const std::string& data) const
     {
         std::ofstream file(filename);

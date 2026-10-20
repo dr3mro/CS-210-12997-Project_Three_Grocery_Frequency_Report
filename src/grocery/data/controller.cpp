@@ -52,16 +52,18 @@ namespace grocery::data
     std::string DataController::FindItem(const std::string& key) const
     {
         auto item = kvStore.getItem(key);
+        std::string result{};
         if (item == kvStore.end())
         {
             // Missing items are represented by a zero count.
-            return presenter.FormatItemWithQuantity(key, 0);
+            result = presenter.FormatItemWithQuantity(key, 0);
         }
         else
         {
             // The presenter owns user-facing wording and formatting.
-            return presenter.FormatItemWithQuantity(item->first, item->second);
+            result = presenter.FormatItemWithQuantity(item->first, item->second);
         }
+        return result;
     }
 
     /**
