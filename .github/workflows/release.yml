@@ -32,47 +32,45 @@ jobs:
           - os: linux
             arch: x64
             runner: ubuntu-latest
-            compiler: g++
-            flags: ""
+            cmake_args: "-DCMAKE_CXX_COMPILER=g++"
             extension: ""
           - os: linux
             arch: x86
             runner: ubuntu-latest
-            compiler: g++
-            flags: "-m32"
+            cmake_args: "-DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS=-m32"
             extension: ""
           - os: linux
             arch: arm64
             runner: ubuntu-24.04-arm
-            compiler: g++
-            flags: ""
+            cmake_args: "-DCMAKE_CXX_COMPILER=g++"
             extension: ""
           - os: macos
             arch: x64
             runner: macos-14
-            compiler: clang++
-            flags: "-arch x86_64"
+            cmake_args: "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_OSX_ARCHITECTURES=x86_64"
             extension: ""
           - os: macos
             arch: arm64
             runner: macos-14
-            compiler: clang++
-            flags: "-arch arm64"
+            cmake_args: "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_OSX_ARCHITECTURES=arm64"
             extension: ""
           - os: windows
             arch: x64
             runner: windows-latest
             msvc_arch: amd64
+            cmake_args: ""
             extension: ".exe"
           - os: windows
             arch: x86
             runner: windows-latest
             msvc_arch: amd64_x86
+            cmake_args: ""
             extension: ".exe"
           - os: windows
             arch: arm64
             runner: windows-latest
             msvc_arch: amd64_arm64
+            cmake_args: ""
             extension: ".exe"
 
     steps:
@@ -92,32 +90,13 @@ jobs:
         with:
           arch: ${{ matrix.msvc_arch }}
 
-      - name: Build Unix binary
-        if: matrix.os != 'windows'
+      - name: Build binary with CMake
         shell: bash
         run: |
           mkdir -p dist
-          make clean-all
-          make build-release CXX="${{ matrix.compiler }} ${{ matrix.flags }}"
-          cp build/release/grocery "dist/grocery-${{ matrix.os }}-${{ matrix.arch }}"
-
-      - name: Build Windows binary
-        if: matrix.os == 'windows'
-        shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force dist | Out-Null
-          $sources = @("main.cpp") + (Get-ChildItem -Path src -Recurse -Filter *.cpp | ForEach-Object { $_.FullName })
-          $objects = @()
-          for ($i = 0; $i -lt $sources.Count; $i++) {
-            $object = "dist\obj\$i.obj"
-            New-Item -ItemType Directory -Force (Split-Path $object) | Out-Null
-            cl.exe /nologo /std:c++17 /EHsc /W4 /O2 /Iinclude /I. /c $sources[$i] /Fo$object
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-            $objects += $object
-          }
-          cl.exe /nologo $objects `
-            /Fe:"dist\grocery-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --preset release ${{ matrix.cmake_args }}
+          cmake --build --preset release
+          cp "build/release/grocery${{ matrix.extension }}" "dist/grocery-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
 
       - name: Package binary
         shell: bash

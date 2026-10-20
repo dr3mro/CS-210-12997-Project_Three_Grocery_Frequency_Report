@@ -24,10 +24,12 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install Doxygen
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y doxygen
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y doxygen ninja-build
 
       - name: Generate documentation
-        run: make docs
+        run: |
+          cmake --preset release
+          cmake --build --preset release --target docs
 
       - name: Mark documentation as static HTML
         run: touch docs/.nojekyll

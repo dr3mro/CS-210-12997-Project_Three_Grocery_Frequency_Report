@@ -13,11 +13,16 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
 
-# Flags copied from the Makefile.
-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-
-add_compile_options(-Wall -Wextra -pedantic)
+# Flags copied from the Makefile for GCC/Clang; MSVC gets its equivalents.
+if(MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "/O2")
+    set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od")
+    add_compile_options(/W4)
+else()
+    set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+    add_compile_options(-Wall -Wextra -pedantic)
+endif()
 
 file(GLOB_RECURSE GROCERY_SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
