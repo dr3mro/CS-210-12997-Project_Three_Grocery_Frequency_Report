@@ -4,10 +4,12 @@ Checks: >
   bugprone-*,
   cert-*,
   clang-analyzer-*,
+  misc-*,
   modernize-*,
   performance-*,
   readability-*,
   -bugprone-easily-swappable-parameters,
+  -misc-non-private-member-variables-in-classes,
   -modernize-use-trailing-return-type,
   -modernize-use-nodiscard,
   -readability-magic-numbers,
@@ -16,5 +18,5 @@ Checks: >
   -performance-avoid-endl
 
 WarningsAsErrors: ''
-HeaderFilterRegex: '(include|src)/.*'
+HeaderFilterRegex: '/(include|src)/grocery/.*'
 FormatStyle: file
